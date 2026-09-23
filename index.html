@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>Shubh Vivah | Saurav &amp; Saumya ✨ Pūrṇam Studio Royal Wedding</title>
+
+  <meta name="description" content="Together with their families, Saurav Singh Bisht &amp; Saumya Latwal joyfully invite you to celebrate their sacred wedding union in Devbhoomi Uttarakhand. Presented by Pūrṇam Studio.">
+  <meta property="og:title" content="Shubh Vivah • Saurav &amp; Saumya | Royal Wedding Invitation">
+  <meta property="og:description" content="An interactive royal wedding invitation with 3D walk-through doors, scratch date reveal, ceremonies, Google Maps, and calendar integration.">
+  <meta property="og:type" content="website">
+
+  <!-- Curated Luxury Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="palette-blush-gold gate-locked">
+  <!-- 120 FPS Ambient Petals & Confetti Canvases -->
+  <canvas id="ambientPetalCanvas" class="ambient-canvas"></canvas>
+  <canvas id="confettiCanvas" class="confetti-canvas"></canvas>
+
+  <!-- FLOATING LUXURY CONTROLS (Top Bar) -->
+  <header class="top-nav-bar" id="topNavBar">
+    <div class="nav-left">
+      <span class="nav-title">Pūrṇam Studio</span>
+    </div>
+
+    <!-- Theme Palette Selector -->
+    <div class="palette-selector-pill" title="Switch Modern Pastel Theme">
+      <span class="palette-label">Theme:</span>
+      <button class="palette-dot dot-blush active" data-theme="palette-blush-gold" title="Blush Rose &amp; Champagne Gold"></button>
+      <button class="palette-dot dot-sage" data-theme="palette-sage-ivory" title="Sage Green &amp; Ivory Cream"></button>
+      <button class="palette-dot dot-lavender" data-theme="palette-lavender-champagne" title="Soft Lavender &amp; Pearl"></button>
+    </div>
+
+    <!-- Audio Player Toggle -->
+    <div class="nav-right">
+      <button id="audioToggleBtn" class="audio-toggle-btn" aria-label="Toggle Shehnai Background Music">
+        <div class="equalizer-wave">
+          <span class="wave-bar bar-1"></span>
+          <span class="wave-bar bar-2"></span>
+          <span class="wave-bar bar-3"></span>
+          <span class="wave-bar bar-4"></span>
+        </div>
+        <span class="audio-text" id="audioStatusText">Music: OFF</span>
+      </button>
+
+      <!-- Quick Section Anchor Links -->
+      <nav class="quick-nav">
+        <a href="#scratchSection" class="nav-chip">Reveal Date</a>
+        <a href="#itinerarySection" class="nav-chip">Ceremonies</a>
+        <a href="#venueSection" class="nav-chip">Venues</a>
+        <a href="#calendarSection" class="nav-chip">RSVP</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Audio Element -->
+  <audio id="weddingAudio" loop preload="auto">
+    <source src="assets/artful_wedding_theme.mp3" type="audio/mp3">
+  </audio>
+
+  <!-- ======================================================== -->
+  <!-- STAGE 1: THE 3D ROYAL WELCOME GATE (Walk-Through Experience) -->
+  <!-- ======================================================== -->
+  <section class="gate-stage-viewport" id="gateStage">
+    <div class="gate-perspective-wrap">
+      
+      <!-- Ornate Palace Archway Frame -->
+      <div class="palace-arch-frame">
+        
+        <!-- Sacred Vedic Pediment & Purnam Studio Badge -->
+        <div class="arch-pediment">
+          <div class="studio-present-badge">⚜️ PŪRṆAM STUDIO PRESENTS ⚜️</div>
+          <div class="auspicious-shloka">&#x0965; &#x0936;&#x094D;&#x0930;&#x0940; &#x0917;&#x0923;&#x0947;&#x0936;&#x093E;&#x092F; &#x0928;&#x092E;&#x0903; &#x0965;</div>
+          <div class="pediment-emblem">
+            <svg class="ganesha-gold-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M50 15 C42 15 36 22 36 32 C36 44 42 50 44 58 C44 66 38 72 44 78 C48 81 54 80 56 75 C58 70 52 64 52 56 C52 48 58 42 58 32 C58 22 56 15 50 15 Z" fill="url(#goldGradGate)"/>
+              <circle cx="50" cy="24" r="3.5" fill="#FFE599"/>
+              <path d="M30 32 C24 38 20 50 25 60 C28 66 36 68 40 62" stroke="url(#goldGradGate)" stroke-width="3" stroke-linecap="round"/>
+              <path d="M70 32 C76 38 80 50 75 60 C72 66 64 68 60 62" stroke="url(#goldGradGate)" stroke-width="3" stroke-linecap="round"/>
+              <circle cx="50" cy="85" r="4" fill="url(#goldGradGate)"/>
+              <defs>
+                <linearGradient id="goldGradGate" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#FFF3C4"/>
+                  <stop offset="45%" stop-color="#D4AF37"/>
+                  <stop offset="100%" stop-color="#996515"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <div class="deva-blessing">&#x0965; &#x092E;&#x093E;&#x0902; &#x0928;&#x0902;&#x0926;&#x093E; &#x0926;&#x0947;&#x0935;&#x0940; &#x092A;&#x094D;&#x0930;&#x0938;&#x0928;&#x094D;&#x0928; &#x0965;</div>
+        </div>
+
+        <!-- THE 3D DOUBLE DOORS -->
+        <div class="doors-chamber" id="doorsChamber">
+          
+          <!-- LEFT DOOR -->
+          <div class="door-leaf door-left" id="doorLeft">
+            <div class="door-panel-carving">
+              <div class="jaali-lattice"></div>
+              <div class="door-crest">
+                <span class="crest-letter">S</span>
+                <span class="crest-motif">❖</span>
+              </div>
+              <div class="door-handle handle-left">
+                <div class="handle-ring"></div>
+                <div class="handle-base"></div>
+              </div>
+              <div class="wood-sheen"></div>
+            </div>
+          </div>
+
+          <!-- RIGHT DOOR -->
+          <div class="door-leaf door-right" id="doorRight">
+            <div class="door-panel-carving">
+              <div class="jaali-lattice"></div>
+              <div class="door-crest">
+                <span class="crest-letter">S</span>
+                <span class="crest-motif">❖</span>
+              </div>
+              <div class="door-handle handle-right">
+                <div class="handle-ring"></div>
+                <div class="handle-base"></div>
+              </div>
+              <div class="wood-sheen"></div>
+            </div>
+          </div>
+
+          <!-- INNER PALACE SANCTUM & EMERGING CARD PREVIEW -->
+          <div class="inner-sanctum-glow" id="innerSanctum">
+            <div class="light-beam-radiance"></div>
+            <div class="emerging-card-preview" id="emergingCardPreview">
+              <div class="preview-mandala"></div>
+              <span class="preview-badge">SHUBH VIVAH</span>
+              <h2 class="preview-couple">Saurav &amp; Saumya</h2>
+              <p class="preview-date">25 – 28 November 2026 • Devbhoomi</p>
+            </div>
+          </div>
+
+        </div> <!-- /.doors-chamber -->
+
+        <!-- THE INTERACTIVE DOOR UNVEIL TRIGGER -->
+        <div class="gate-interactive-cta" id="gateTriggerArea">
+          <button class="royal-seal-btn" id="openDoorsBtn" aria-label="Open the Royal Wedding Doors">
+            <span class="seal-glow-ring"></span>
+            <span class="seal-inner">
+              <span class="seal-icon">🪔</span>
+              <span class="seal-text">TAP TO OPEN ROYAL DOORS</span>
+              <span class="seal-subtext">Step Inside the Auspicious Celebrations</span>
+            </span>
+          </button>
+        </div>
+
+      </div> <!-- /.palace-arch-frame -->
+
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- STAGE 2: THE MAIN WEDDING INVITATION (Full Experience)   -->
+  <!-- ======================================================== -->
+  <main class="main-wedding-experience" id="mainExperience">
+
+    <!-- HERO CARD: THE ROYAL INVITATION BANNER -->
+    <section class="hero-card-section luxury-reveal-item" id="heroSection">
+      <div class="glass-royal-card hero-inner">
+        <div class="card-filigree-corners">
+          <span class="corner tl"></span><span class="corner tr"></span>
+          <span class="corner bl"></span><span class="corner br"></span>
+        </div>
+
+        <div class="ganesha-header">
+          <span class="om-tag">&#x0950;</span>
+          <p class="sanskrit-mantra">
+            &#x0965; &#x0935;&#x0915;&#x094D;&#x0930;&#x0924;&#x0941;&#x0923;&#x094D;&#x0921; &#x092E;&#x0939;&#x093E;&#x0915;&#x093E;&#x092F; &#x0938;&#x0942;&#x0930;&#x094D;&#x092F;&#x0915;&#x094B;&#x091F;&#x093F; &#x0938;&#x092E;&#x092A;&#x094D;&#x0930;&#x092D;&#x0964; &#x0928;&#x093F;&#x0930;&#x094D;&#x0935;&#x093F;&#x0918;&#x094D;&#x0928;&#x0902; &#x0915;&#x0941;&#x0930;&#x0941; &#x092E;&#x0947; &#x0926;&#x0947;&#x0935; &#x0938;&#x0930;&#x094D;&#x0935;&#x0915;&#x093E;&#x0930;&#x094D;&#x092F;&#x0947;&#x0937;&#x0941; &#x0938;&#x0930;&#x094D;&#x0935;&#x0926;&#x093E;&#x0965;
+          </p>
+        </div>
+
+        <div class="invitation-intro">
+          <div class="royal-ribbon">
+            <span class="ribbon-line"></span>
+            <span class="ribbon-text">SHUBH VIVAH INVITATION</span>
+            <span class="ribbon-line"></span>
+          </div>
+          <p class="cordial-note">
+            With the divine blessings of the Almighty, our revered Kuldevta, and Maa Nanda Devi,
+            we joyfully request the pleasure of your gracious company and blessings on the auspicious wedding celebrations of
+          </p>
+        </div>
+
+        <!-- THE COUPLE (Apple-grade Typography with Fine-Art Portrait) -->
+        <div class="couple-spotlight">
+          
+          <div class="person groom-block luxury-reveal-item" data-delay="150">
+            <h1 class="person-name groom-name shimmer-text">Saurav</h1>
+            <span class="person-title">Saurav Singh Bisht</span>
+            <p class="person-lineage">
+              Son of <strong>Smt. Anita Bisht &amp; Shri Rajinder Singh Bisht</strong>
+            </p>
+          </div>
+
+          <div class="couple-center-media luxury-reveal-item" data-delay="300">
+            <div class="couple-hero-portrait-wrap">
+              <img src="assets/couple_hero_portrait.webp" alt="Saurav Singh Bisht &amp; Saumya Latwal" class="couple-hero-img" loading="eager">
+              <div class="portrait-filigree-ring"></div>
+            </div>
+            <div class="couple-ampersand-wrap">
+              <div class="monogram-seal">
+                <span class="mono-initials">S &amp; S</span>
+              </div>
+              <span class="knot-subtitle">Weds</span>
+            </div>
+          </div>
+
+          <div class="person bride-block luxury-reveal-item" data-delay="450">
+            <h1 class="person-name bride-name shimmer-text">Saumya</h1>
+            <span class="person-title">Saumya Latwal</span>
+            <p class="person-lineage">
+              Daughter of <strong>Smt. Tara Devi &amp; Shri Anand Singh Latwal</strong>
+            </p>
+          </div>
+        </div>
+
+        <!-- Devbhoomi Heritage Quote -->
+        <div class="heritage-quote luxury-reveal-item" data-delay="600">
+          <span class="quote-flower">🌸</span>
+          <p>“Two souls, two families, united by sacred vows amidst the majestic hills of Devbhoomi Uttarakhand.”</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- INTERACTIVE SCRATCH-TO-REVEAL WEDDING DATE CARD          -->
+    <!-- ======================================================== -->
+    <section class="scratch-showcase-section luxury-reveal-item" id="scratchSection">
+      <div class="section-title-wrap">
+        <span class="badge-sub">SECRET AUSPICIOUS MOMENT</span>
+        <h2 class="section-heading shimmer-text">Scratch to Reveal the Sacred Date</h2>
+        <p class="section-desc">Swipe your finger or move your cursor across the gold foil seal below to uncover the Shubh Muhurat &amp; Wedding Milestones!</p>
+      </div>
+
+      <div class="scratch-card-container">
+        <div class="scratch-outer-frame">
+          
+          <!-- UNDERNEATH: THE REVEALED SACRED DATE & COUNTDOWN -->
+          <div class="scratch-secret-content" id="scratchSecret">
+            <div class="revealed-badge">✨ Auspicious Wedding Muhurat Unveiled ✨</div>
+            <div class="revealed-main-date">
+              <span class="day-name">THURSDAY</span>
+              <span class="date-large">26</span>
+              <div class="month-year-wrap">
+                <span class="month-name">NOVEMBER</span>
+                <span class="year-num">2026</span>
+              </div>
+            </div>
+            <p class="revealed-sub-dates">Celebrations Span: 25th Nov (Lodhiya) &bull; 26th Nov (Qwarab) &bull; 28th Nov (New Delhi)</p>
+
+            <div class="muhurat-pill-row">
+              <div class="m-pill">
+                <span class="m-icon">🎺</span>
+                <div class="m-info">
+                  <strong>Baraat Swagat</strong>
+                  <span>05:00 PM Onwards</span>
+                </div>
+              </div>
+              <div class="m-pill">
+                <span class="m-icon">🌸</span>
+                <div class="m-info">
+                  <strong>Varmala Ceremony</strong>
+                  <span>07:30 PM Auspicious Hour</span>
+                </div>
+              </div>
+              <div class="m-pill">
+                <span class="m-icon">🔥</span>
+                <div class="m-info">
+                  <strong>Sacred Saat Pheras</strong>
+                  <span>09:15 PM Vedic Lagna</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- LIVE COUNTDOWN TIMER (Targets 25 Nov 2026) -->
+            <div class="countdown-widget" id="countdownWidget">
+              <div class="cd-box">
+                <span class="cd-number" id="cdDays">00</span>
+                <span class="cd-label">DAYS</span>
+              </div>
+              <div class="cd-colon">:</div>
+              <div class="cd-box">
+                <span class="cd-number" id="cdHours">00</span>
+                <span class="cd-label">HOURS</span>
+              </div>
+              <div class="cd-colon">:</div>
+              <div class="cd-box">
+                <span class="cd-number" id="cdMins">00</span>
+                <span class="cd-label">MINUTES</span>
+              </div>
+              <div class="cd-colon">:</div>
+              <div class="cd-box">
+                <span class="cd-number" id="cdSecs">00</span>
+                <span class="cd-label">SECONDS</span>
+              </div>
+            </div>
+
+            <div class="scratch-action-footer">
+              <button class="celebrate-btn" id="confettiReplayBtn">
+                <span>🎉 Celebrate with Confetti</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- TOP OVERLAY: THE INTERACTIVE SCRATCH CANVAS -->
+          <canvas id="scratchCanvas" class="scratch-foil-canvas"></canvas>
+
+          <!-- Floating instruction hint over scratch surface -->
+          <div class="scratch-hint-overlay" id="scratchHint">
+            <div class="hint-hand-icon">🪙</div>
+            <span class="hint-text">Rub or Drag Here to Scratch &amp; Reveal</span>
+          </div>
+
+        </div> <!-- /.scratch-outer-frame -->
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- WEDDING CEREMONIES ITINERARY TIMELINE (With AI Photos)    -->
+    <!-- ======================================================== -->
+    <section class="itinerary-section luxury-reveal-item" id="itinerarySection">
+      <div class="section-title-wrap">
+        <span class="badge-sub">CELEBRATION TIMELINE</span>
+        <h2 class="section-heading shimmer-text">Festivities &amp; Sacred Ceremonies</h2>
+        <p class="section-desc">Join us across every cherished milestone of our joyous multi-day celebration.</p>
+      </div>
+
+      <div class="ceremonies-grid">
+
+        <!-- 1. HALDI & MEHNDI CEREMONY -->
+        <article class="ceremony-card luxury-reveal-item" data-delay="100">
+          <div class="ceremony-img-wrap">
+            <img src="assets/event_haldi_mehendi.webp" alt="Haldi &amp; Mehndi Ceremony of Saurav &amp; Saumya" class="ceremony-img" loading="lazy">
+            <div class="ceremony-tag tag-haldi">DAY 1 • 25 NOV 2026 • LODHIYA</div>
+          </div>
+          <div class="ceremony-body">
+            <div class="c-time-badge">Wednesday, Nov 25, 2026 • 11:00 AM Onwards</div>
+            <h3 class="c-title">Haldi &amp; Mehendi Celebration</h3>
+            <p class="c-desc">
+              Basking in the golden radiance of sacred organic turmeric, melodious Kumaoni folk songs, vibrant dholak rhythms, and intricate bridal mehendi artistry.
+            </p>
+            <div class="c-details-meta">
+              <div class="meta-item">
+                <span class="meta-icon">🎨</span>
+                <span><strong>Dress Code:</strong> Sunshine Yellow, Haldi Ochre &amp; Festive Pastel</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-icon">📍</span>
+                <span><strong>Venue:</strong> Lodhiya, Uttarakhand</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 2. MAHILA SANGEET & MUSICAL NIGHT -->
+        <article class="ceremony-card luxury-reveal-item" data-delay="200">
+          <div class="ceremony-img-wrap">
+            <img src="assets/event_mahila_sangeet.webp" alt="Mahila Sangeet &amp; Musical Evening" class="ceremony-img" loading="lazy">
+            <div class="ceremony-tag tag-sangeet">DAY 1 NIGHT • 25 NOV 2026 • LODHIYA</div>
+          </div>
+          <div class="ceremony-body">
+            <div class="c-time-badge">Wednesday, Nov 25, 2026 • 06:30 PM Onwards</div>
+            <h3 class="c-title">Mahila Sangeet &amp; Musical Evening</h3>
+            <p class="c-desc">
+              A high-voltage musical evening of heartfelt family dance performances, lively Uttarakhand folk tunes, celebratory toasts, and joyful dancing under festive lights.
+            </p>
+            <div class="c-details-meta">
+              <div class="meta-item">
+                <span class="meta-icon">✨</span>
+                <span><strong>Dress Code:</strong> Shimmering Rose Gold, Emerald &amp; Indo-Western</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-icon">📍</span>
+                <span><strong>Venue:</strong> Lodhiya, Uttarakhand</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 3. SHUBH VIVAH (THE SACRED WEDDING) -->
+        <article class="ceremony-card luxury-reveal-item card-featured" data-delay="300">
+          <div class="ceremony-img-wrap">
+            <img src="assets/event_shubh_vivah.webp" alt="Shubh Vivah Sacred Wedding" class="ceremony-img" loading="lazy">
+            <div class="ceremony-tag tag-vivah">DAY 2 • 26 NOV 2026 • QWARAB</div>
+          </div>
+          <div class="ceremony-body">
+            <div class="c-time-badge">Thursday, Nov 26, 2026 • 05:00 PM Onwards</div>
+            <h3 class="c-title">Shubh Vivah &amp; Seven Sacred Pheras</h3>
+            <p class="c-desc">
+              The grand Baraat procession and warm welcome, the joyous Varmala exchange under floral arches, followed by the sacred Vedic Saat Pheras around the holy fire.
+            </p>
+            <div class="c-schedule-timeline">
+              <div class="t-stop"><span>05:00 PM</span> Baraat Swagat &amp; Milni</div>
+              <div class="t-stop"><span>07:30 PM</span> Royal Varmala Ceremony</div>
+              <div class="t-stop"><span>09:15 PM</span> Sacred Vedic Saat Pheras</div>
+            </div>
+            <div class="c-details-meta">
+              <div class="meta-item">
+                <span class="meta-icon">👑</span>
+                <span><strong>Dress Code:</strong> Traditional Royal Devbhoomi Uttarakhand Splendor</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-icon">📍</span>
+                <span><strong>Venue:</strong> Qwarab, Uttarakhand</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 4. GRAND RECEPTION PARTY -->
+        <article class="ceremony-card luxury-reveal-item" data-delay="400">
+          <div class="ceremony-img-wrap">
+            <img src="assets/event_reception_gala.webp" alt="Grand Reception &amp; Dinner" class="ceremony-img" loading="lazy">
+            <div class="ceremony-tag tag-reception">DAY 3 • 28 NOV 2026 • NEW DELHI</div>
+          </div>
+          <div class="ceremony-body">
+            <div class="c-time-badge">Saturday, Nov 28, 2026 • 07:00 PM Onwards</div>
+            <h3 class="c-title">Grand Wedding Reception Gala</h3>
+            <p class="c-desc">
+              A lavish celebration welcoming the newlyweds with gourmet delicacies, celebratory congratulations, photography, and an enchanting dinner gala.
+            </p>
+            <div class="c-details-meta">
+              <div class="meta-item">
+                <span class="meta-icon">🎩</span>
+                <span><strong>Dress Code:</strong> Formal Tuxedos, Evening Gowns &amp; Elegant Silk Sarees</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-icon">📍</span>
+                <span><strong>Venue:</strong> Radhe Krishna Vatika, Dwarka Vihar, Najafgarh, New Delhi</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- INTERACTIVE GOOGLE MAPS VENUE SECTION                    -->
+    <!-- ======================================================== -->
+    <section class="venue-showcase-section luxury-reveal-item" id="venueSection">
+      <div class="section-title-wrap">
+        <span class="badge-sub">INTERACTIVE MAPS &amp; DIRECTIONS</span>
+        <h2 class="section-heading shimmer-text">Ceremony Venues &amp; Navigation</h2>
+        <p class="section-desc">Easily navigate to all ceremony locations with interactive Google Maps and one-tap GPS directions.</p>
+      </div>
+
+      <div class="venues-split-grid venues-three-col">
+        
+        <!-- VENUE 1: LODHIYA, UTTARAKHAND -->
+        <div class="venue-card luxury-reveal-item" data-delay="100">
+          <div class="venue-header">
+            <div class="venue-badge">VENUE 1 • 25 NOV 2026</div>
+            <h3 class="venue-name">Lodhiya, Uttarakhand</h3>
+            <p class="venue-ceremony-type">🌼 Mahila Sangeet, Mehendi &amp; Haldi</p>
+            <p class="venue-address">
+              📍 Lodhiya, Almora-Bhowali Highway, Almora District, Devbhoomi Uttarakhand
+            </p>
+          </div>
+
+          <!-- Embedded Interactive Google Map -->
+          <div class="map-embed-wrapper">
+            <iframe
+              class="google-map-frame"
+              title="Google Map for Lodhiya Uttarakhand"
+              loading="lazy"
+              allowfullscreen
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d55250.0!2d79.62!3d29.58!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39a0b764b8bb26c7%3A0xc3b5e40e698ee5eb!2sLodhiya%2C%20Uttarakhand!5e0!3m2!1sen!2sin!4v1700000000001!5m2!1sen!2sin">
+            </iframe>
+          </div>
+
+          <div class="venue-actions">
+            <a 
+              href="https://maps.google.com/?q=Lodhiya,+Uttarakhand,+India" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="map-direct-btn">
+              <span class="btn-icon">🧭</span>
+              <span>Open in Google Maps</span>
+            </a>
+            <span class="venue-valet-tag">🚗 Scenic Hill Parking</span>
+          </div>
+        </div>
+
+        <!-- VENUE 2: QWARAB, UTTARAKHAND -->
+        <div class="venue-card luxury-reveal-item" data-delay="250">
+          <div class="venue-header">
+            <div class="venue-badge">VENUE 2 • 26 NOV 2026</div>
+            <h3 class="venue-name">Qwarab, Uttarakhand</h3>
+            <p class="venue-ceremony-type">👑 The Day of Marriage (Shubh Vivah)</p>
+            <p class="venue-address">
+              📍 Qwarab, Near Kosi-Suyal River Confluence, Almora-Nainital Highway, Uttarakhand
+            </p>
+          </div>
+
+          <!-- Embedded Interactive Google Map -->
+          <div class="map-embed-wrapper">
+            <iframe
+              class="google-map-frame"
+              title="Google Map for Qwarab Uttarakhand"
+              loading="lazy"
+              allowfullscreen
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d55300.0!2d79.57!3d29.53!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39a0a4e76813bf6b%3A0x6b447817e7d6928e!2sQwarab%2C%20Uttarakhand!5e0!3m2!1sen!2sin!4v1700000000002!5m2!1sen!2sin">
+            </iframe>
+          </div>
+
+          <div class="venue-actions">
+            <a 
+              href="https://maps.google.com/?q=Qwarab,+Uttarakhand,+India" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="map-direct-btn">
+              <span class="btn-icon">🧭</span>
+              <span>Open in Google Maps</span>
+            </a>
+            <span class="venue-valet-tag">🚗 Riverfront Pavilion Parking</span>
+          </div>
+        </div>
+
+        <!-- VENUE 3: RADHE KRISHNA VATIKA, NEW DELHI -->
+        <div class="venue-card luxury-reveal-item" data-delay="400">
+          <div class="venue-header">
+            <div class="venue-badge">VENUE 3 • 28 NOV 2026</div>
+            <h3 class="venue-name">Radhe Krishna Vatika</h3>
+            <p class="venue-ceremony-type">🥂 Grand Wedding Reception Party</p>
+            <p class="venue-address">
+              📍 Radhe Krishna Vatika, Dwarka Vihar, Najafgarh, New Delhi 110043
+            </p>
+          </div>
+
+          <!-- Embedded Interactive Google Map -->
+          <div class="map-embed-wrapper">
+            <iframe
+              class="google-map-frame"
+              title="Google Map for Radhe Krishna Vatika Najafgarh New Delhi"
+              loading="lazy"
+              allowfullscreen
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14008.0!2d76.98!3d28.61!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d0577a7efcaeb%3A0xa1ea14e7a3ff972!2sRadhe%20Krishna%20Vatika%2C%20Najafgarh%2C%20Delhi!5e0!3m2!1sen!2sin!4v1700000000003!5m2!1sen!2sin">
+            </iframe>
+          </div>
+
+          <div class="venue-actions">
+            <a 
+              href="https://maps.google.com/?q=Radhe+Krishna+Vatika,+Dwarka+Vihar,+Najafgarh,+New+Delhi" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="map-direct-btn">
+              <span class="btn-icon">🧭</span>
+              <span>Open in Google Maps</span>
+            </a>
+            <span class="venue-valet-tag">🚗 Valet Parking Available</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- ADD TO CALENDAR SUITE & RSVP SECTION                     -->
+    <!-- ======================================================== -->
+    <section class="calendar-rsvp-section luxury-reveal-item" id="calendarSection">
+      <div class="glass-royal-card calendar-inner">
+        <div class="section-title-wrap">
+          <span class="badge-sub">SAVE THE AUSPICIOUS DATES</span>
+          <h2 class="section-heading shimmer-text">Add to Your Calendar &amp; RSVP</h2>
+          <p class="section-desc">Never miss a joyous moment. Sync directly with your iPhone Apple Calendar or Google Calendar.</p>
+        </div>
+
+        <div class="calendar-action-buttons">
+          <!-- Google Calendar Button -->
+          <a 
+            id="googleCalendarBtn" 
+            class="cal-btn btn-google" 
+            target="_blank" 
+            rel="noopener noreferrer">
+            <span class="cal-logo">📅</span>
+            <div class="cal-btn-text">
+              <strong>Add to Google Calendar</strong>
+              <span>Instant One-Click Sync</span>
+            </div>
+          </a>
+
+          <!-- Apple Calendar (.ICS dynamic generator) -->
+          <button id="appleCalendarBtn" class="cal-btn btn-apple">
+            <span class="cal-logo">🍏</span>
+            <div class="cal-btn-text">
+              <strong>Add to Apple Calendar</strong>
+              <span>Download iCal (.ics) for iPhone / Mac</span>
+            </div>
+          </button>
+        </div>
+
+        <!-- RSVP & Direct WhatsApp Blessings -->
+        <div class="rsvp-contact-box">
+          <div class="rsvp-col">
+            <h4 class="rsvp-title">💌 RSVP &amp; Warm Blessings</h4>
+            <p class="rsvp-desc">Let us know you are joining the celebrations or send your personal wishes to the couple!</p>
+            <div class="rsvp-buttons">
+              <a 
+                id="whatsappRsvpBtn"
+                class="whatsapp-btn" 
+                href="https://api.whatsapp.com/send?phone=919654219271&text=Namaste%20Saurav!%20%F0%9F%8C%B8%E2%9C%A8%20Heartiest%20Congratulations%20to%20you%20and%20Saumya%20on%20your%20wedding!%20Sending%20our%20warmest%20blessings%20for%20a%20joyful%20married%20life!%20%F0%9F%92%90"
+                target="_blank" 
+                rel="noopener noreferrer">
+                <span class="wa-icon">💬</span>
+                <span>Send Wishes via WhatsApp</span>
+              </a>
+              <button id="quickWishBtn" class="wish-btn">
+                <span>💐 Shower Virtual Flower Blessings</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="family-contacts">
+            <h4 class="contacts-heading">Warm Contacts &amp; Hospitality</h4>
+            <div class="contact-line"><strong>Shri Rajinder Singh Bisht (Groom's Father):</strong> <a href="tel:+919871604109">+91 98716 04109</a></div>
+            <div class="contact-line"><strong>Shri Anand Singh Latwal (Bride's Father):</strong> <a href="tel:+919812345678">+91 98123 45678</a></div>
+            <div class="contact-line"><strong>Hospitality Desk:</strong> <a href="mailto:admin@purnamstudio.com">admin@purnamstudio.com</a></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- FAMILY LINEAGE, RELATIVES & BLESSINGS                     -->
+    <!-- ======================================================== -->
+    <section class="family-lineage-section luxury-reveal-item" id="familySection">
+      <div class="lineage-grid">
+        
+        <div class="lineage-card">
+          <h3 class="l-card-title">&#x0926;&#x0930;&#x094D;&#x0936;&#x0928;&#x093E;&#x092D;&#x093F;&#x0932;&#x093E;&#x0937;&#x0940;</h3>
+          <p class="l-card-sub">With Warm Welcome &amp; Sincere Gratitude</p>
+          <ul class="lineage-list">
+            <li>Smt. Anita Bisht &amp; Shri Rajinder Singh Bisht</li>
+            <li>Smt. Tara Devi &amp; Shri Anand Singh Latwal</li>
+            <li>All Relatives, Near &amp; Dear Friends</li>
+            <li>Bisht &amp; Latwal Parivar</li>
+          </ul>
+        </div>
+
+        <div class="lineage-card children-card">
+          <div class="child-balloon">🎈</div>
+          <h3 class="l-card-title children-note">&#x091C;&#x0932;&#x0942;&#x0932; &#x091C;&#x0932;&#x0942;&#x0932; &#x0906;&#x0928;&#x093E;</h3>
+          <p class="child-quote">
+            “Mere pyare Chachu aur Bua ki shaadi mein jalool se jalool aana!”
+          </p>
+          <span class="child-names">— With Love from All Little Angels of the Family 💕</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FOOTER WITH BLESSINGS & PURNAM STUDIO BRANDING -->
+    <footer class="app-footer">
+      <div class="footer-emblem">&#x0950;</div>
+      <p class="footer-blessing">&#x0965; &#x0936;&#x0941;&#x092D;&#x0902; &#x0915;&#x0930;&#x094B;&#x0924;&#x093F; &#x0915;&#x0932;&#x094D;&#x092F;&#x093E;&#x0923;&#x092E;&#x094D; &#x0906;&#x0930;&#x094B;&#x0917;&#x094D;&#x092F;&#x0902; &#x0927;&#x0928;&#x0938;&#x0902;&#x092A;&#x0926;&#x093E; &#x0965;</p>
+      <p class="footer-copy">Crafted with devotion &bull; Devbhoomi Uttarakhand &bull; Saurav &amp; Saumya Vivah 2026</p>
+      <div class="footer-studio-credit">
+        <span>Architected by <strong>Pūrṇam Studio</strong></span>
+      </div>
+    </footer>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

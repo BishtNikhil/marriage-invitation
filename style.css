@@ -1,0 +1,1871 @@
+/* ==========================================================================
+   SHUBH VIVAH LUXURY MODERN PASTEL MARRIAGE CARD
+   Apple-Grade 120Hz Animations • 3D Royal Door Unveil • Scratch Reveal
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. LUXURY COLOR PALETTE VARIABLES & DESIGN TOKENS
+   -------------------------------------------------------------------------- */
+:root {
+  /* Default: Modern Blush Rose & Champagne Gold */
+  --bg-gradient-start: #FCF8F5;
+  --bg-gradient-mid: #F8EDEB;
+  --bg-gradient-end: #F5E5E5;
+  
+  --primary-accent: #C27685;
+  --primary-accent-light: #F8D8DC;
+  --primary-accent-dark: #8E3E4F;
+
+  --gold-primary: #D4AF37;
+  --gold-light: #F7E7BE;
+  --gold-dark: #996515;
+  --gold-shimmer: linear-gradient(135deg, #FFF6D6 0%, #D4AF37 50%, #9E7422 100%);
+  
+  --text-main: #33272A;
+  --text-muted: #6B5B60;
+  --text-light: #948388;
+  
+  --card-bg: rgba(255, 255, 255, 0.82);
+  --card-border: rgba(212, 175, 55, 0.28);
+  --card-shadow: 0 20px 50px rgba(142, 62, 79, 0.08), 0 4px 12px rgba(0, 0, 0, 0.03);
+
+  --font-serif: 'Playfair Display', serif;
+  --font-script: 'Cormorant Garamond', serif;
+  --font-sans: 'Outfit', sans-serif;
+  --font-decorative: 'Cinzel Decorative', serif;
+
+  --ease-apple: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Palette 2: Sage Green & Ivory Cream */
+body.palette-sage-ivory {
+  --bg-gradient-start: #FAFBF7;
+  --bg-gradient-mid: #EEF4EB;
+  --bg-gradient-end: #E4ECE0;
+  --primary-accent: #5D7A68;
+  --primary-accent-light: #DCE7DA;
+  --primary-accent-dark: #375040;
+  --card-shadow: 0 20px 50px rgba(55, 80, 64, 0.08);
+}
+
+/* Palette 3: Soft Lavender & Pearl Champagne */
+body.palette-lavender-champagne {
+  --bg-gradient-start: #FBF9FC;
+  --bg-gradient-mid: #F2ECF7;
+  --bg-gradient-end: #E8DEEE;
+  --primary-accent: #7D6B90;
+  --primary-accent-light: #E7DEEE;
+  --primary-accent-dark: #4F3E61;
+  --card-shadow: 0 20px 50px rgba(79, 62, 97, 0.08);
+}
+
+/* --------------------------------------------------------------------------
+   2. GLOBAL RESETS & FOUNDATION
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--text-main);
+  background: linear-gradient(170deg, var(--bg-gradient-start) 0%, var(--bg-gradient-mid) 50%, var(--bg-gradient-end) 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  transition: background 0.6s var(--ease-apple);
+}
+
+/* Strict Gate Lock before user opens doors */
+body.gate-locked {
+  overflow: hidden !important;
+  height: 100vh !important;
+  touch-action: none;
+}
+body.gate-locked .main-wedding-experience {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+body.gate-locked .top-nav-bar {
+  opacity: 0.95;
+}
+
+/* Background Ambient Canvases */
+.ambient-canvas, .confetti-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 100;
+}
+.ambient-canvas {
+  z-index: 2;
+  opacity: 0.65;
+}
+.confetti-canvas {
+  z-index: 999;
+}
+
+/* --------------------------------------------------------------------------
+   3. LUXURY TOP NAVIGATION BAR
+   -------------------------------------------------------------------------- */
+.top-nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+  z-index: 800;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  transition: transform 0.4s var(--ease-apple);
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.om-symbol {
+  font-size: 1.4rem;
+  color: var(--gold-primary);
+  font-weight: bold;
+}
+
+.nav-title {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--text-main);
+}
+
+/* Theme Pill Switcher */
+.palette-selector-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.palette-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+}
+
+.palette-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid white;
+  cursor: pointer;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.15);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.palette-dot:hover {
+  transform: scale(1.15);
+}
+.palette-dot.active {
+  box-shadow: 0 0 0 2px var(--gold-primary);
+  transform: scale(1.2);
+}
+.dot-blush { background: linear-gradient(135deg, #F8D8DC, #C27685); }
+.dot-sage { background: linear-gradient(135deg, #DCE7DA, #5D7A68); }
+.dot-lavender { background: linear-gradient(135deg, #E7DEEE, #7D6B90); }
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Audio Toggle Button with Animated Wave */
+.audio-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--gold-primary);
+  border-radius: 24px;
+  padding: 6px 14px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.2);
+  transition: all 0.25s var(--ease-apple);
+}
+.audio-toggle-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.35);
+}
+
+.equalizer-wave {
+  display: flex;
+  align-items: flex-end;
+  gap: 2.5px;
+  height: 14px;
+}
+
+.wave-bar {
+  width: 3px;
+  background: var(--gold-primary);
+  border-radius: 2px;
+  height: 4px;
+  transition: height 0.2s ease;
+}
+
+.audio-toggle-btn.playing .bar-1 { animation: wavePulse 1.1s infinite ease-in-out; }
+.audio-toggle-btn.playing .bar-2 { animation: wavePulse 0.9s infinite ease-in-out 0.2s; }
+.audio-toggle-btn.playing .bar-3 { animation: wavePulse 1.2s infinite ease-in-out 0.4s; }
+.audio-toggle-btn.playing .bar-4 { animation: wavePulse 0.8s infinite ease-in-out 0.1s; }
+
+@keyframes wavePulse {
+  0%, 100% { height: 4px; }
+  50% { height: 14px; }
+}
+
+.audio-text {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-main);
+  letter-spacing: 0.5px;
+}
+
+.quick-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.nav-chip {
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  padding: 4px 10px;
+  border-radius: 12px;
+  transition: all 0.2s;
+}
+.nav-chip:hover {
+  color: var(--primary-accent);
+  background: rgba(255,255,255,0.7);
+}
+
+@media (max-width: 768px) {
+  .quick-nav { display: none; }
+  .palette-label { display: none; }
+  .top-nav-bar { padding: 0 12px; }
+}
+
+/* --------------------------------------------------------------------------
+   4. STAGE 1: 3D ROYAL WELCOME GATE (Apple 120Hz Animation)
+   -------------------------------------------------------------------------- */
+.gate-stage-viewport {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1600px;
+  padding: 80px 16px 40px;
+  overflow-y: auto;
+  z-index: 50;
+  background: var(--bg-cream);
+  transition: opacity 1s var(--ease-apple), transform 1s var(--ease-apple);
+}
+
+.gate-stage-viewport.doors-opened {
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(1.15) translateY(-50px);
+  position: absolute;
+  visibility: hidden;
+}
+
+.gate-perspective-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 580px;
+  transform-style: preserve-3d;
+  transition: transform 2.4s cubic-bezier(0.2, 0.9, 0.25, 1), opacity 2.2s cubic-bezier(0.2, 0.9, 0.25, 1), filter 2.2s ease;
+}
+
+.gate-perspective-wrap.walking-inside {
+  transform: scale(2.6) translateZ(800px) translateY(-50px) !important;
+  opacity: 0 !important;
+  filter: blur(8px) !important;
+  pointer-events: none !important;
+}
+
+.studio-present-badge {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: #FFDF78;
+  text-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+/* Palace Arch Frame */
+.palace-arch-frame {
+  position: relative;
+  background: #201719;
+  border-radius: 280px 280px 20px 20px;
+  border: 4px solid #DFBE72;
+  box-shadow: 
+    0 0 0 3px #5C411D,
+    0 25px 70px rgba(0, 0, 0, 0.45),
+    inset 0 0 30px rgba(0, 0, 0, 0.8);
+  padding: 20px 16px 24px;
+  transform-style: preserve-3d;
+  overflow: hidden;
+}
+
+/* Arch Pediment with Auspicious Ganesha Emblem */
+.arch-pediment {
+  text-align: center;
+  padding: 10px 0 16px;
+  position: relative;
+  z-index: 5;
+}
+
+.auspicious-shloka, .deva-blessing {
+  font-family: var(--font-serif);
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  color: #F8DF9E;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+}
+.deva-blessing {
+  font-size: 0.78rem;
+  margin-top: 4px;
+  color: #DFC07D;
+}
+
+.pediment-emblem {
+  width: 56px;
+  height: 56px;
+  margin: 6px auto;
+  filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.6));
+}
+.ganesha-gold-svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Doors Chamber (3D Stage) */
+.doors-chamber {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  border-radius: 220px 220px 12px 12px;
+  background: #140D0F;
+  border: 2px solid rgba(212, 175, 55, 0.4);
+  box-shadow: inset 0 0 50px rgba(0,0,0,0.9);
+  perspective: 1400px;
+  perspective-origin: center center;
+  overflow: hidden;
+}
+
+/* Door Leaves */
+.door-leaf {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transform-origin: left center;
+  transition: transform 2.2s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  z-index: 4;
+}
+
+.door-left {
+  left: 0;
+  transform-origin: left center;
+  border-right: 1.5px solid #FFDF78;
+}
+
+.door-right {
+  right: 0;
+  transform-origin: right center;
+  border-left: 1.5px solid #FFDF78;
+}
+
+/* Door Swing Open State (120Hz Apple Feel) */
+.doors-chamber.open .door-left {
+  transform: rotateY(-118deg);
+}
+.doors-chamber.open .door-right {
+  transform: rotateY(118deg);
+}
+
+.door-panel-carving {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(145deg, #4A2810 0%, #2B160A 50%, #1A0D06 100%);
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.door-left .door-panel-carving {
+  border-radius: 220px 0 0 10px;
+}
+.door-right .door-panel-carving {
+  border-radius: 0 220px 10px 0;
+}
+
+/* Jaali Lattice Filigree on Door */
+.jaali-lattice {
+  position: absolute;
+  top: 15%;
+  left: 10%;
+  right: 10%;
+  bottom: 15%;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  background-image: radial-gradient(circle, rgba(212, 175, 55, 0.25) 1.5px, transparent 1.5px);
+  background-size: 16px 16px;
+  pointer-events: none;
+}
+
+.door-crest {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid #D4AF37;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle, #3D1C06 0%, #1F0D03 100%);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6), inset 0 0 10px rgba(212, 175, 55, 0.4);
+  z-index: 2;
+}
+
+.crest-letter {
+  font-family: var(--font-decorative);
+  font-size: 1.4rem;
+  color: #FFE599;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.crest-motif {
+  font-size: 0.55rem;
+  color: #D4AF37;
+}
+
+/* Lion / Ring Handles */
+.door-handle {
+  position: absolute;
+  bottom: 30%;
+  z-index: 3;
+}
+.handle-left { right: 12px; }
+.handle-right { left: 12px; }
+
+.handle-base {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--gold-shimmer);
+  border: 1px solid #754C0E;
+}
+
+.handle-ring {
+  width: 22px;
+  height: 28px;
+  border: 3px solid #FFDF78;
+  border-radius: 50%;
+  margin-top: -6px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.6);
+  animation: handleSway 3s ease-in-out infinite alternate;
+}
+
+@keyframes handleSway {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(4deg); }
+}
+
+/* Inner Palace Sanctum (Revealed behind the gate) */
+.inner-sanctum-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(ellipse at center, #FFF4E0 0%, #F5DEC2 40%, #B89255 80%, #201308 100%);
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 1.2s var(--ease-apple);
+}
+
+.doors-chamber.open .inner-sanctum-glow {
+  opacity: 1;
+}
+
+.light-beam-radiance {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 500px;
+  height: 500px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(255, 235, 179, 0.9) 0%, rgba(212, 175, 55, 0.4) 40%, transparent 70%);
+  filter: blur(20px);
+  animation: pulseLight 2.4s ease-in-out infinite alternate;
+}
+
+@keyframes pulseLight {
+  0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.7; }
+  100% { transform: translate(-50%, -50%) scale(1.15); opacity: 1; }
+}
+
+.emerging-card-preview {
+  position: relative;
+  text-align: center;
+  padding: 30px 24px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid #D4AF37;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+  transform: scale(0.7) translateZ(-200px);
+  opacity: 0;
+  transition: all 1.4s var(--ease-apple);
+  z-index: 2;
+}
+
+.doors-chamber.open .emerging-card-preview {
+  transform: scale(1) translateZ(0);
+  opacity: 1;
+}
+
+.preview-badge {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  font-weight: 700;
+  color: var(--primary-accent);
+  margin-bottom: 8px;
+}
+
+.preview-couple {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  color: #2D1A1E;
+  margin-bottom: 6px;
+}
+
+.preview-date {
+  font-family: var(--font-script);
+  font-size: 1.15rem;
+  color: #634C37;
+  font-weight: 600;
+}
+
+/* Gate Interactive CTA Trigger */
+.gate-interactive-cta {
+  margin-top: 20px;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+}
+
+.royal-seal-btn {
+  position: relative;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 14px 32px;
+  outline: none;
+  transition: transform 0.3s var(--ease-apple);
+}
+.royal-seal-btn:hover {
+  transform: scale(1.04);
+}
+.royal-seal-btn:active {
+  transform: scale(0.96);
+}
+
+.seal-glow-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 40px;
+  background: radial-gradient(circle, rgba(255, 223, 120, 0.5) 0%, rgba(212, 175, 55, 0.1) 70%, transparent 100%);
+  filter: blur(10px);
+  animation: sealPulse 2s infinite ease-in-out;
+}
+
+@keyframes sealPulse {
+  0%, 100% { transform: scale(0.96); opacity: 0.6; }
+  50% { transform: scale(1.08); opacity: 1; }
+}
+
+.seal-inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(135deg, #FFEFBA 0%, #D4AF37 50%, #8C5C18 100%);
+  padding: 12px 30px;
+  border-radius: 36px;
+  box-shadow: 
+    0 8px 25px rgba(212, 175, 55, 0.45),
+    inset 0 1px 2px rgba(255, 255, 255, 0.8);
+  border: 1.5px solid #FFE28A;
+}
+
+.seal-icon {
+  font-size: 1.4rem;
+  margin-bottom: 2px;
+}
+
+.seal-text {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #2D1405;
+}
+
+.seal-subtext {
+  font-size: 0.72rem;
+  color: #4A2B0F;
+  letter-spacing: 0.5px;
+  margin-top: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   5. STAGE 2: MAIN WEDDING EXPERIENCE & APPLE SCROLL REVEALS
+   -------------------------------------------------------------------------- */
+.main-wedding-experience {
+  position: relative;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 85px 20px 80px;
+  z-index: 20;
+  transition: opacity 1.5s var(--ease-apple), transform 1.5s var(--ease-apple);
+}
+
+.main-wedding-experience.revealing {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  animation: revealMainExperience 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes revealMainExperience {
+  0% {
+    opacity: 0;
+    transform: translateY(45px) scale(0.96);
+    filter: blur(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0px);
+  }
+}
+
+/* Apple-style Smooth Scroll Reveals */
+.apple-reveal {
+  opacity: 0;
+  transform: translateY(45px);
+  transition: opacity 1s var(--ease-apple), transform 1s var(--ease-apple);
+  will-change: opacity, transform;
+}
+
+.apple-reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.apple-reveal-card {
+  opacity: 0;
+  transform: translateY(35px) scale(0.97);
+  transition: opacity 0.85s var(--ease-apple), transform 0.85s var(--ease-apple);
+  will-change: opacity, transform;
+}
+
+.apple-reveal-card.in-view {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Glassmorphism Royal Card Container */
+.glass-royal-card {
+  position: relative;
+  background: var(--card-bg);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid var(--card-border);
+  border-radius: 28px;
+  padding: 48px 36px;
+  box-shadow: var(--card-shadow);
+  margin-bottom: 48px;
+}
+
+/* Ornate Corner Filigree */
+.card-filigree-corners .corner {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--gold-primary);
+}
+.corner.tl { top: 16px; left: 16px; border-right: none; border-bottom: none; border-top-left-radius: 8px; }
+.corner.tr { top: 16px; right: 16px; border-left: none; border-bottom: none; border-top-right-radius: 8px; }
+.corner.bl { bottom: 16px; left: 16px; border-right: none; border-top: none; border-bottom-left-radius: 8px; }
+.corner.br { bottom: 16px; right: 16px; border-left: none; border-top: none; border-bottom-right-radius: 8px; }
+
+/* --------------------------------------------------------------------------
+   6. HERO SECTION: INVITATION HEADER & COUPLE SPOTLIGHT
+   -------------------------------------------------------------------------- */
+.ganesha-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.om-tag {
+  display: inline-block;
+  font-size: 2.2rem;
+  color: var(--gold-primary);
+  margin-bottom: 6px;
+}
+
+.sanskrit-mantra {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--gold-dark);
+  max-width: 680px;
+  margin: 0 auto;
+  letter-spacing: 0.5px;
+}
+
+.invitation-intro {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.royal-ribbon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.ribbon-line {
+  height: 1px;
+  width: 60px;
+  background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+}
+
+.ribbon-text {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: var(--primary-accent);
+}
+
+.cordial-note {
+  font-family: var(--font-script);
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* Couple Spotlight (Apple-Grade Typography & Gradient Shine) */
+.couple-spotlight {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 24px;
+  padding: 32px 16px;
+  background: rgba(255, 255, 255, 0.45);
+  border-radius: 20px;
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  margin-bottom: 32px;
+}
+
+.person {
+  text-align: center;
+}
+
+.person-name {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--text-main) 0%, var(--primary-accent-dark) 60%, var(--gold-dark) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 4px;
+  letter-spacing: -0.5px;
+}
+
+.person-title {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: var(--primary-accent);
+  margin-bottom: 12px;
+}
+
+.person-lineage {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+.person-lineage strong {
+  color: var(--text-main);
+}
+.person-lineage em {
+  font-style: normal;
+  color: var(--text-light);
+  font-size: 0.82rem;
+}
+
+/* Center Ampersand Monogram */
+.couple-ampersand-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.monogram-seal {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FFF7DF 0%, #D4AF37 70%, #996515 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px rgba(212, 175, 55, 0.35);
+  border: 2px solid white;
+}
+
+.mono-initials {
+  font-family: var(--font-decorative);
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: #381E04;
+}
+
+.knot-subtitle {
+  font-family: var(--font-script);
+  font-size: 1.1rem;
+  font-style: italic;
+  font-weight: 600;
+  color: var(--primary-accent);
+  margin-top: 6px;
+}
+
+.heritage-quote {
+  text-align: center;
+  padding: 16px;
+  border-top: 1px dashed rgba(212, 175, 55, 0.3);
+  font-family: var(--font-script);
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.quote-flower {
+  font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .couple-spotlight {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   7. INTERACTIVE SCRATCH-TO-REVEAL SECTION
+   -------------------------------------------------------------------------- */
+.scratch-showcase-section {
+  margin-bottom: 56px;
+}
+
+.section-title-wrap {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.badge-sub {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--primary-accent);
+  background: var(--primary-accent-light);
+  padding: 4px 14px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+}
+
+.section-heading {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 8px;
+}
+
+.section-desc {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  max-width: 580px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+.scratch-card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.scratch-outer-frame {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  min-height: 380px;
+  border-radius: 24px;
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.12),
+    0 0 0 2px rgba(212, 175, 55, 0.4);
+  overflow: hidden;
+  background: white;
+}
+
+/* Revealed Content (Hidden underneath scratch foil) */
+.scratch-secret-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 36px 24px;
+  background: linear-gradient(145deg, #FFFFFF 0%, #FFFBF5 60%, #FBF3E8 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.revealed-badge {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  letter-spacing: 2.5px;
+  font-weight: 700;
+  color: var(--gold-dark);
+  margin-bottom: 12px;
+}
+
+.revealed-main-date {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.day-name {
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--primary-accent);
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+.date-large {
+  font-family: var(--font-serif);
+  font-size: clamp(4.5rem, 10vw, 6rem);
+  font-weight: 900;
+  line-height: 1;
+  background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold-primary) 50%, #E6B800 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.month-year-wrap {
+  text-align: left;
+}
+
+.month-name {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--text-main);
+  line-height: 1.1;
+}
+
+.year-num {
+  font-family: var(--font-script);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--gold-dark);
+}
+
+/* Muhurat Pills */
+.muhurat-pill-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.m-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 8px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+}
+
+.m-icon {
+  font-size: 1.2rem;
+}
+
+.m-info {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+.m-info strong {
+  font-size: 0.82rem;
+  color: var(--text-main);
+}
+.m-info span {
+  font-size: 0.74rem;
+  color: var(--text-muted);
+}
+
+/* Countdown Widget */
+.countdown-widget {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 16px;
+  padding: 12px 18px;
+  margin-bottom: 20px;
+}
+
+.cd-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 44px;
+}
+
+.cd-number {
+  font-family: var(--font-sans);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--primary-accent-dark);
+  line-height: 1.1;
+}
+
+.cd-label {
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--text-light);
+  margin-top: 2px;
+}
+
+.cd-colon {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: var(--gold-primary);
+  margin-bottom: 12px;
+}
+
+.celebrate-btn {
+  background: var(--gold-shimmer);
+  border: 1px solid #C4972E;
+  color: #381E04;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 8px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+  transition: transform 0.2s;
+}
+.celebrate-btn:hover {
+  transform: scale(1.05);
+}
+
+/* Top Overlay: Canvas Scratch Surface */
+.scratch-foil-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+  z-index: 3;
+  touch-action: none;
+  transition: opacity 0.8s var(--ease-apple);
+}
+.scratch-foil-canvas:active {
+  cursor: grabbing;
+}
+.scratch-foil-canvas.cleared {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Floating Hint */
+.scratch-hint-overlay {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(8px);
+  color: white;
+  padding: 8px 18px;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  pointer-events: none;
+  z-index: 4;
+  animation: floatHint 2.5s infinite ease-in-out;
+  transition: opacity 0.4s;
+}
+
+@keyframes floatHint {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, -6px); }
+}
+
+.hint-hand-icon {
+  font-size: 1.1rem;
+}
+
+/* --------------------------------------------------------------------------
+   8. ITINERARY SECTION: CELEBRATION TIMELINE
+   -------------------------------------------------------------------------- */
+.itinerary-section {
+  margin-bottom: 56px;
+}
+
+.ceremonies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
+}
+
+.ceremony-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--card-border);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.4s var(--ease-apple), box-shadow 0.4s var(--ease-apple);
+}
+
+.ceremony-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.1);
+}
+
+.ceremony-card.card-featured {
+  border: 1.5px solid var(--gold-primary);
+  box-shadow: 0 20px 50px rgba(212, 175, 55, 0.2);
+}
+
+.ceremony-img-wrap {
+  position: relative;
+  width: 100%;
+  height: 210px;
+  overflow: hidden;
+}
+
+.ceremony-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease-apple);
+}
+.ceremony-card:hover .ceremony-img {
+  transform: scale(1.05);
+}
+
+.ceremony-tag {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  padding: 5px 12px;
+  border-radius: 12px;
+  color: white;
+  backdrop-filter: blur(10px);
+}
+.tag-haldi { background: rgba(224, 159, 21, 0.9); }
+.tag-sangeet { background: rgba(142, 62, 126, 0.9); }
+.tag-vivah { background: linear-gradient(135deg, rgba(212, 175, 55, 0.95), rgba(184, 43, 62, 0.95)); }
+.tag-reception { background: rgba(43, 64, 116, 0.9); }
+
+.ceremony-body {
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.c-time-badge {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--primary-accent);
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+.c-title {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 8px;
+}
+
+.c-desc {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  flex: 1;
+}
+
+.c-schedule-timeline {
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 12px;
+  padding: 10px 14px;
+  margin-bottom: 16px;
+  border-left: 3px solid var(--gold-primary);
+}
+
+.t-stop {
+  font-size: 0.8rem;
+  color: var(--text-main);
+  line-height: 1.6;
+}
+.t-stop span {
+  font-weight: 700;
+  color: var(--gold-dark);
+  margin-right: 6px;
+}
+
+.c-details-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-top: 1px solid rgba(0,0,0,0.06);
+  padding-top: 12px;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+.meta-icon {
+  font-size: 0.95rem;
+}
+
+/* --------------------------------------------------------------------------
+   9. INTERACTIVE GOOGLE MAPS VENUE SECTION
+   -------------------------------------------------------------------------- */
+.venue-showcase-section {
+  margin-bottom: 56px;
+}
+
+.venues-split-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+.venue-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--card-border);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.venue-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--gold-dark);
+  background: rgba(212, 175, 55, 0.15);
+  padding: 4px 12px;
+  border-radius: 12px;
+  margin-bottom: 8px;
+}
+
+.venue-name {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 6px;
+}
+
+.venue-address {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.map-embed-wrapper {
+  position: relative;
+  width: 100%;
+  height: 240px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+  margin-bottom: 16px;
+}
+
+.google-map-frame {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.venue-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.map-direct-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #FFF9EB 0%, #F5DEB0 100%);
+  border: 1px solid var(--gold-primary);
+  color: #381E04;
+  text-decoration: none;
+  font-size: 0.84rem;
+  font-weight: 700;
+  padding: 10px 18px;
+  border-radius: 20px;
+  transition: all 0.25s var(--ease-apple);
+  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.2);
+}
+.map-direct-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(212, 175, 55, 0.35);
+}
+
+.venue-valet-tag {
+  font-size: 0.78rem;
+  color: var(--text-light);
+  font-weight: 500;
+}
+
+/* --------------------------------------------------------------------------
+   10. CALENDAR SYNC & RSVP SUITE
+   -------------------------------------------------------------------------- */
+.calendar-rsvp-section {
+  margin-bottom: 56px;
+}
+
+.calendar-action-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  margin-bottom: 36px;
+}
+
+.cal-btn {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 24px;
+  border-radius: 20px;
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  transition: all 0.3s var(--ease-apple);
+}
+.cal-btn:hover {
+  transform: translateY(-3px);
+}
+.cal-btn:active {
+  transform: scale(0.98);
+}
+
+.btn-google {
+  background: linear-gradient(135deg, #FFFFFF 0%, #F5F7FA 100%);
+  border: 1.5px solid #4285F4;
+  box-shadow: 0 8px 20px rgba(66, 133, 244, 0.15);
+}
+.btn-google:hover {
+  box-shadow: 0 12px 28px rgba(66, 133, 244, 0.25);
+}
+
+.btn-apple {
+  background: linear-gradient(135deg, #2D2328 0%, #151013 100%);
+  border: 1.5px solid #4A3A42;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  color: white;
+}
+.btn-apple:hover {
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+}
+
+.cal-logo {
+  font-size: 2rem;
+}
+
+.cal-btn-text {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+.btn-google .cal-btn-text strong {
+  font-size: 0.98rem;
+  color: #1A73E8;
+}
+.btn-google .cal-btn-text span {
+  font-size: 0.76rem;
+  color: #5F6368;
+}
+
+.btn-apple .cal-btn-text strong {
+  font-size: 0.98rem;
+  color: #FFFFFF;
+}
+.btn-apple .cal-btn-text span {
+  font-size: 0.76rem;
+  color: #BDB5BA;
+}
+
+/* RSVP Container */
+.rsvp-contact-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  padding: 28px;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.rsvp-title, .contacts-heading {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 8px;
+}
+
+.rsvp-desc {
+  font-size: 0.86rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.rsvp-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.whatsapp-btn, .wish-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 20px;
+  border-radius: 14px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.25s var(--ease-apple);
+}
+
+.whatsapp-btn {
+  background: #25D366;
+  color: white;
+  border: none;
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
+}
+.whatsapp-btn:hover {
+  background: #20BA5A;
+  transform: translateY(-2px);
+}
+
+.wish-btn {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--primary-accent);
+  color: var(--primary-accent-dark);
+}
+.wish-btn:hover {
+  background: var(--primary-accent-light);
+  transform: translateY(-1px);
+}
+
+.family-contacts {
+  border-left: 1px dashed rgba(212, 175, 55, 0.3);
+  padding-left: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contact-line {
+  font-size: 0.85rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+}
+.contact-line strong {
+  color: var(--text-main);
+}
+.contact-line a {
+  color: var(--primary-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(212, 175, 55, 0.4);
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+.contact-line a:hover {
+  color: var(--gold-dark);
+  text-decoration-color: var(--gold-dark);
+}
+
+@media (max-width: 768px) {
+  .rsvp-contact-box {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .family-contacts {
+    border-left: none;
+    border-top: 1px dashed rgba(212, 175, 55, 0.3);
+    padding-left: 0;
+    padding-top: 20px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   11. FAMILY LINEAGE & CHILDREN'S NOTE
+   -------------------------------------------------------------------------- */
+.family-lineage-section {
+  margin-bottom: 56px;
+}
+
+.lineage-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 24px;
+}
+
+.lineage-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: var(--card-shadow);
+}
+
+.l-card-title {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--primary-accent-dark);
+  margin-bottom: 4px;
+}
+
+.l-card-sub {
+  font-size: 0.8rem;
+  color: var(--gold-dark);
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+}
+
+.lineage-list {
+  list-style: none;
+}
+.lineage-list li {
+  font-size: 0.88rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+  position: relative;
+  padding-left: 18px;
+}
+.lineage-list li::before {
+  content: "❖";
+  position: absolute;
+  left: 0;
+  font-size: 0.7rem;
+  color: var(--gold-primary);
+}
+
+.children-card {
+  position: relative;
+  background: linear-gradient(145deg, rgba(255,255,255,0.9) 0%, rgba(253, 242, 244, 0.9) 100%);
+  border: 1px dashed var(--primary-accent);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.child-balloon {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.children-note {
+  color: var(--primary-accent);
+  font-size: 1.15rem;
+}
+
+.child-quote {
+  font-family: var(--font-script);
+  font-size: 1.25rem;
+  font-style: italic;
+  color: var(--text-main);
+  line-height: 1.5;
+  margin: 10px 0;
+}
+
+.child-names {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--primary-accent-dark);
+}
+
+@media (max-width: 768px) {
+  .lineage-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   12. FOOTER
+   -------------------------------------------------------------------------- */
+.app-footer {
+  text-align: center;
+  padding: 40px 20px;
+  border-top: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.footer-emblem {
+  font-size: 1.8rem;
+  color: var(--gold-primary);
+  margin-bottom: 8px;
+}
+
+.footer-blessing {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  color: var(--gold-dark);
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.footer-copy {
+  font-size: 0.78rem;
+  color: var(--text-light);
+  letter-spacing: 0.5px;
+}
+
+
+/* --------------------------------------------------------------------------
+   LUXURY ENHANCEMENTS: SHIMMER, REVEALS, COUPLE PORTRAIT & 3-COL VENUES
+   -------------------------------------------------------------------------- */
+.couple-center-media {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 10px 0;
+}
+
+.couple-hero-portrait-wrap {
+  position: relative;
+  width: 180px;
+  height: 235px;
+  border-radius: 120px 120px 28px 28px;
+  overflow: hidden;
+  border: 3.5px solid var(--gold-primary);
+  box-shadow: 0 14px 40px rgba(194, 118, 133, 0.28), 0 0 25px rgba(212, 175, 55, 0.4);
+  margin-bottom: 6px;
+  transition: transform 0.5s var(--ease-apple), box-shadow 0.5s var(--ease-apple);
+}
+.couple-hero-portrait-wrap:hover {
+  transform: scale(1.05) translateY(-4px);
+  box-shadow: 0 18px 50px rgba(194, 118, 133, 0.35), 0 0 35px rgba(212, 175, 55, 0.6);
+}
+
+.couple-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 15%;
+  display: block;
+}
+
+.shimmer-text {
+  background: linear-gradient(135deg, var(--text-main) 0%, var(--primary-accent-dark) 25%, var(--gold-dark) 50%, var(--primary-accent) 75%, var(--text-main) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textShimmerMove 6s linear infinite;
+}
+
+@keyframes textShimmerMove {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+.luxury-reveal-item {
+  opacity: 0;
+  transform: translateY(32px);
+  filter: blur(4px);
+  transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1), transform 1.1s cubic-bezier(0.16, 1, 0.3, 1), filter 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform, filter;
+}
+
+.luxury-reveal-item.in-view {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+.revealed-sub-dates {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--gold-dark);
+  margin-bottom: 18px;
+  letter-spacing: 0.5px;
+}
+
+.venues-three-col {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 24px;
+}
+@media (max-width: 980px) {
+  .venues-three-col {
+    grid-template-columns: 1fr !important;
+  }
+}
+.venue-ceremony-type {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--primary-accent);
+  margin: 4px 0 8px;
+}
+
+.footer-studio-credit {
+  margin-top: 14px;
+  font-size: 0.82rem;
+  color: var(--gold-primary);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}

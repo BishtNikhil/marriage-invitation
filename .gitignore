@@ -1,0 +1,7 @@
+# System & Temporary Files
+.DS_Store
+Thumbs.db
+*_check.jpg
+*.bat
+.vercel/
+node_modules/
