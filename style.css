@@ -1690,7 +1690,6 @@ body.gate-locked .top-nav-bar {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  text-align: left;
 }
 
 .l-card-title {
@@ -1699,6 +1698,7 @@ body.gate-locked .top-nav-bar {
   font-weight: 700;
   color: var(--primary-accent-dark);
   margin-bottom: 4px;
+  text-align: center;
 }
 
 .l-card-sub {
@@ -1707,6 +1707,7 @@ body.gate-locked .top-nav-bar {
   font-weight: 600;
   letter-spacing: 1px;
   margin-bottom: 16px;
+  text-align: center;
 }
 
 .lineage-list {
