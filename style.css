@@ -1558,8 +1558,8 @@ body.gate-locked .top-nav-bar {
 /* RSVP Container */
 .rsvp-contact-box {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 32px;
+  grid-template-columns: 1fr 1.35fr;
+  gap: 28px;
   background: rgba(255, 255, 255, 0.5);
   border-radius: 20px;
   padding: 28px;
@@ -1632,8 +1632,9 @@ body.gate-locked .top-nav-bar {
 
 .contact-line {
   font-size: 0.85rem;
-  line-height: 1.8;
+  line-height: 1.9;
   color: var(--text-muted);
+  margin-bottom: 2px;
 }
 .contact-line strong {
   color: var(--text-main);
@@ -1644,6 +1645,8 @@ body.gate-locked .top-nav-bar {
   text-underline-offset: 3px;
   text-decoration-color: rgba(212, 175, 55, 0.4);
   font-weight: 600;
+  white-space: nowrap;
+  display: inline-block;
   transition: all 0.25s ease;
 }
 .contact-line a:hover {
@@ -1651,7 +1654,7 @@ body.gate-locked .top-nav-bar {
   text-decoration-color: var(--gold-dark);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 950px) {
   .rsvp-contact-box {
     grid-template-columns: 1fr;
     gap: 24px;
