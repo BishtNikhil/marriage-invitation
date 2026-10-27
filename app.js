@@ -93,6 +93,24 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* --------------------------------------------------------------------------
+     SCROLL HANDLER FOR AUTO-MINIFYING MUSIC BUTTON & HIDING HEADER
+     -------------------------------------------------------------------------- */
+  let scrollTicking = false;
+  window.addEventListener('scroll', () => {
+    if (!scrollTicking) {
+      window.requestAnimationFrame(() => {
+        if (window.scrollY > 50) {
+          document.body.classList.add('scrolled-nav');
+        } else {
+          document.body.classList.remove('scrolled-nav');
+        }
+        scrollTicking = false;
+      });
+      scrollTicking = true;
+    }
+  }, { passive: true });
+
+  /* --------------------------------------------------------------------------
      3. STAGE 1: 3D ROYAL WELCOME GATE (Apple 120Hz Transition)
      -------------------------------------------------------------------------- */
   const openDoorsBtn = document.getElementById('openDoorsBtn');
