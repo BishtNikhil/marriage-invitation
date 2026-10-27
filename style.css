@@ -114,8 +114,8 @@ body.gate-locked .top-nav-bar {
   z-index: 100;
 }
 .ambient-canvas {
-  z-index: 2;
-  opacity: 0.65;
+  z-index: 10;
+  opacity: 1;
 }
 .confetti-canvas {
   z-index: 999;
@@ -297,10 +297,10 @@ body.gate-locked .top-nav-bar {
   align-items: center;
   justify-content: center;
   perspective: 1600px;
-  padding: 80px 16px 40px;
-  overflow-y: auto;
+  padding: 20px 16px;
+  overflow: hidden;
   z-index: 50;
-  background: var(--bg-cream);
+  background: linear-gradient(170deg, var(--bg-gradient-start) 0%, var(--bg-gradient-mid) 50%, var(--bg-gradient-end) 100%);
   transition: opacity 1s var(--ease-apple), transform 1s var(--ease-apple);
 }
 
@@ -315,7 +315,10 @@ body.gate-locked .top-nav-bar {
 .gate-perspective-wrap {
   position: relative;
   width: 100%;
-  max-width: 580px;
+  max-width: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transform-style: preserve-3d;
   transition: transform 2.4s cubic-bezier(0.2, 0.9, 0.25, 1), opacity 2.2s cubic-bezier(0.2, 0.9, 0.25, 1), filter 2.2s ease;
 }
@@ -334,31 +337,38 @@ body.gate-locked .top-nav-bar {
   letter-spacing: 3px;
   color: #FFDF78;
   text-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   text-transform: uppercase;
 }
 
 /* Palace Arch Frame */
 .palace-arch-frame {
   position: relative;
+  width: 100%;
   background: #201719;
-  border-radius: 280px 280px 20px 20px;
+  border-radius: 260px 260px 24px 24px;
   border: 4px solid #DFBE72;
   box-shadow: 
     0 0 0 3px #5C411D,
     0 25px 70px rgba(0, 0, 0, 0.45),
     inset 0 0 30px rgba(0, 0, 0, 0.8);
-  padding: 20px 16px 24px;
+  padding: 22px 18px 20px;
   transform-style: preserve-3d;
   overflow: hidden;
+  max-height: calc(100vh - 40px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 }
 
 /* Arch Pediment with Auspicious Ganesha Emblem */
 .arch-pediment {
   text-align: center;
-  padding: 10px 0 16px;
+  padding: 6px 0 14px;
   position: relative;
   z-index: 5;
+  width: 100%;
 }
 
 .auspicious-shloka, .deva-blessing {
@@ -375,8 +385,8 @@ body.gate-locked .top-nav-bar {
 }
 
 .pediment-emblem {
-  width: 56px;
-  height: 56px;
+  width: 52px;
+  height: 52px;
   margin: 6px auto;
   filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.6));
 }
@@ -389,8 +399,8 @@ body.gate-locked .top-nav-bar {
 .doors-chamber {
   position: relative;
   width: 100%;
-  height: 480px;
-  border-radius: 220px 220px 12px 12px;
+  height: clamp(320px, 46vh, 440px);
+  border-radius: 200px 200px 12px 12px;
   background: #140D0F;
   border: 2px solid rgba(212, 175, 55, 0.4);
   box-shadow: inset 0 0 50px rgba(0,0,0,0.9);
@@ -445,19 +455,33 @@ body.gate-locked .top-nav-bar {
 }
 
 .door-left .door-panel-carving {
-  border-radius: 220px 0 0 10px;
+  border-radius: 200px 0 0 10px;
 }
 .door-right .door-panel-carving {
-  border-radius: 0 220px 10px 0;
+  border-radius: 0 200px 10px 0;
 }
 
-/* Jaali Lattice Filigree on Door */
-.jaali-lattice {
+/* Jaali Lattice Filigree on Door - Curves with the Arch */
+.door-left .jaali-lattice {
   position: absolute;
-  top: 15%;
+  top: 12%;
   left: 10%;
+  right: 8%;
+  bottom: 12%;
+  border-radius: 170px 0 0 8px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  background-image: radial-gradient(circle, rgba(212, 175, 55, 0.25) 1.5px, transparent 1.5px);
+  background-size: 16px 16px;
+  pointer-events: none;
+}
+
+.door-right .jaali-lattice {
+  position: absolute;
+  top: 12%;
+  left: 8%;
   right: 10%;
-  bottom: 15%;
+  bottom: 12%;
+  border-radius: 0 170px 8px 0;
   border: 1px solid rgba(212, 175, 55, 0.3);
   background-image: radial-gradient(circle, rgba(212, 175, 55, 0.25) 1.5px, transparent 1.5px);
   background-size: 16px 16px;
@@ -465,57 +489,58 @@ body.gate-locked .top-nav-bar {
 }
 
 .door-crest {
-  width: 60px;
-  height: 60px;
+  width: 68px;
+  height: 68px;
   border-radius: 50%;
   border: 2px solid #D4AF37;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   background: radial-gradient(circle, #3D1C06 0%, #1F0D03 100%);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6), inset 0 0 10px rgba(212, 175, 55, 0.4);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6), inset 0 0 12px rgba(212, 175, 55, 0.4);
   z-index: 2;
+  padding: 8px;
 }
 
-.crest-letter {
-  font-family: var(--font-decorative);
-  font-size: 1.4rem;
-  color: #FFE599;
-  font-weight: 900;
-  line-height: 1;
-}
-
-.crest-motif {
-  font-size: 0.55rem;
-  color: #D4AF37;
+.door-crest-monogram {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.6));
 }
 
 /* Lion / Ring Handles */
 .door-handle {
   position: absolute;
-  bottom: 30%;
-  z-index: 3;
+  top: 55%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 5;
+  pointer-events: none;
 }
 .handle-left { right: 12px; }
 .handle-right { left: 12px; }
 
 .handle-base {
-  width: 14px;
-  height: 14px;
+  width: 15px;
+  height: 15px;
   border-radius: 50%;
-  background: var(--gold-shimmer);
-  border: 1px solid #754C0E;
+  background: radial-gradient(circle, #FFF2B2 0%, #D4AF37 60%, #754C0E 100%);
+  border: 1.5px solid #FFE599;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+  z-index: 2;
 }
 
 .handle-ring {
-  width: 22px;
-  height: 28px;
+  width: 24px;
+  height: 30px;
   border: 3px solid #FFDF78;
   border-radius: 50%;
   margin-top: -6px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.6);
-  animation: handleSway 3s ease-in-out infinite alternate;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+  background: transparent;
 }
 
 @keyframes handleSway {
@@ -882,31 +907,38 @@ body.gate-locked .top-nav-bar {
 }
 
 .monogram-seal {
-  width: 70px;
-  height: 70px;
+  width: 76px;
+  height: 76px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #FFF7DF 0%, #D4AF37 70%, #996515 100%);
+  background: linear-gradient(135deg, #FFF9EB 0%, #F5DEB0 60%, #D4AF37 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 20px rgba(212, 175, 55, 0.35);
-  border: 2px solid white;
+  box-shadow: 0 8px 24px rgba(212, 175, 55, 0.35);
+  border: 2.5px solid white;
+  padding: 10px;
 }
 
-.mono-initials {
-  font-family: var(--font-decorative);
-  font-size: 1.15rem;
-  font-weight: 900;
-  color: #381E04;
+.monogram-seal-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(142, 62, 79, 0.2));
 }
 
-.knot-subtitle {
-  font-family: var(--font-script);
-  font-size: 1.1rem;
-  font-style: italic;
-  font-weight: 600;
-  color: var(--primary-accent);
-  margin-top: 6px;
+.preview-monogram-badge {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  margin: 0 auto 8px auto;
+  display: block;
+}
+
+.nav-brand-logo {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  margin-right: 8px;
 }
 
 .heritage-quote {

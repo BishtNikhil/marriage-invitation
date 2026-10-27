@@ -668,20 +668,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function initAmbientPetals() {
     ambientPetals = [];
-    const count = window.innerWidth < 768 ? 16 : 28;
+    const count = window.innerWidth < 768 ? 38 : 72;
+    const flowerPalettes = [
+      { r: 216, g: 46, b: 78, a: 0.90 },     // Deep vibrant pink/red rose
+      { r: 236, g: 72, b: 104, a: 0.88 },    // Radiant coral blossom
+      { r: 255, g: 140, b: 0, a: 0.92 },     // Rich sacred saffron marigold
+      { r: 245, g: 185, b: 24, a: 0.92 },    // Vibrant golden marigold
+      { r: 188, g: 35, b: 65, a: 0.88 }      // Velvet crimson petal
+    ];
+
     for (let i = 0; i < count; i++) {
+      const col = flowerPalettes[Math.floor(Math.random() * flowerPalettes.length)];
       ambientPetals.push({
         x: Math.random() * window.innerWidth,
         y: Math.random() * window.innerHeight,
-        size: Math.random() * 9 + 6,
-        vy: Math.random() * 0.9 + 0.6,
-        vx: (Math.random() - 0.5) * 0.7,
-        swaySpeed: Math.random() * 0.02 + 0.01,
-        swayRange: Math.random() * 20 + 10,
+        size: Math.random() * 10 + 7,
+        vy: Math.random() * 1.1 + 0.7,
+        vx: (Math.random() - 0.5) * 0.8,
+        swaySpeed: Math.random() * 0.02 + 0.015,
+        swayRange: Math.random() * 24 + 12,
         swayOffset: Math.random() * Math.PI * 2,
         rotation: Math.random() * 360,
-        rotSpeed: (Math.random() - 0.5) * 1.5,
-        color: Math.random() > 0.4 ? 'rgba(248, 216, 220, 0.65)' : 'rgba(255, 239, 186, 0.55)'
+        rotSpeed: (Math.random() - 0.5) * 2.0,
+        color: `rgba(${col.r}, ${col.g}, ${col.b}, ${col.a})`,
+        highlight: `rgba(${Math.min(255, col.r + 50)}, ${Math.min(255, col.g + 50)}, ${Math.min(255, col.b + 50)}, 0.95)`
       });
     }
   }
@@ -691,26 +701,52 @@ document.addEventListener('DOMContentLoaded', () => {
   function renderAmbientPetals() {
     if (!ambientCtx) return;
     ambientCtx.clearRect(0, 0, ambientCanvas.width, ambientCanvas.height);
-    tick += 0.02;
+    tick += 0.025;
 
     for (let i = 0; i < ambientPetals.length; i++) {
       const p = ambientPetals[i];
       p.y += p.vy;
-      p.x += Math.sin(tick + p.swayOffset) * 0.6 + p.vx;
+      p.x += Math.sin(tick + p.swayOffset) * 0.7 + p.vx;
       p.rotation += p.rotSpeed;
 
-      if (p.y > window.innerHeight + 30) {
-        p.y = -20;
+      if (p.y > window.innerHeight + 35) {
+        p.y = -25;
         p.x = Math.random() * window.innerWidth;
       }
+      if (p.x < -30) p.x = window.innerWidth + 20;
+      if (p.x > window.innerWidth + 30) p.x = -20;
 
       ambientCtx.save();
       ambientCtx.translate(p.x, p.y);
       ambientCtx.rotate((p.rotation * Math.PI) / 180);
-      ambientCtx.fillStyle = p.color;
+
+      // Organic floral drop shadow for depth against light background
+      ambientCtx.shadowColor = 'rgba(160, 40, 60, 0.28)';
+      ambientCtx.shadowBlur = 4;
+      ambientCtx.shadowOffsetY = 2;
+
+      // Realistic 3D petal shading with radial gradient
+      const grad = ambientCtx.createRadialGradient(0, -p.size * 0.2, p.size * 0.1, 0, 0, p.size);
+      grad.addColorStop(0, p.highlight);
+      grad.addColorStop(0.85, p.color);
+      grad.addColorStop(1, 'rgba(140, 20, 45, 0.85)');
+
+      ambientCtx.fillStyle = grad;
       ambientCtx.beginPath();
-      ambientCtx.ellipse(0, 0, p.size, p.size * 0.65, 0, 0, Math.PI * 2);
+      // True rose/marigold curved petal shape
+      ambientCtx.moveTo(0, -p.size);
+      ambientCtx.bezierCurveTo(p.size * 0.9, -p.size * 0.8, p.size * 1.1, p.size * 0.6, 0, p.size);
+      ambientCtx.bezierCurveTo(-p.size * 1.1, p.size * 0.6, -p.size * 0.9, -p.size * 0.8, 0, -p.size);
       ambientCtx.fill();
+
+      // Subtle translucent petal vein
+      ambientCtx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
+      ambientCtx.lineWidth = 0.8;
+      ambientCtx.beginPath();
+      ambientCtx.moveTo(0, -p.size * 0.7);
+      ambientCtx.lineTo(0, p.size * 0.7);
+      ambientCtx.stroke();
+
       ambientCtx.restore();
     }
 
