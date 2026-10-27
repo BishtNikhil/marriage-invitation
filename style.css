@@ -332,13 +332,22 @@ body.gate-locked .top-nav-bar {
 
 .studio-present-badge {
   font-family: var(--font-sans);
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 700;
-  letter-spacing: 3px;
+  letter-spacing: 1.5px;
   color: #FFDF78;
   text-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
   margin-bottom: 6px;
   text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  max-width: 90%;
+}
+.badge-fleuron {
+  font-size: 0.75rem;
+  color: #D4AF37;
 }
 
 /* Palace Arch Frame */
@@ -352,7 +361,7 @@ body.gate-locked .top-nav-bar {
     0 0 0 3px #5C411D,
     0 25px 70px rgba(0, 0, 0, 0.45),
     inset 0 0 30px rgba(0, 0, 0, 0.8);
-  padding: 22px 18px 20px;
+  padding: 50px 22px 22px;
   transform-style: preserve-3d;
   overflow: hidden;
   max-height: calc(100vh - 40px);
@@ -365,7 +374,7 @@ body.gate-locked .top-nav-bar {
 /* Arch Pediment with Auspicious Ganesha Emblem */
 .arch-pediment {
   text-align: center;
-  padding: 6px 0 14px;
+  padding: 4px 0 12px;
   position: relative;
   z-index: 5;
   width: 100%;
@@ -399,7 +408,7 @@ body.gate-locked .top-nav-bar {
 .doors-chamber {
   position: relative;
   width: 100%;
-  height: clamp(320px, 46vh, 440px);
+  height: clamp(290px, 42vh, 400px);
   border-radius: 200px 200px 12px 12px;
   background: #140D0F;
   border: 2px solid rgba(212, 175, 55, 0.4);
