@@ -4,6 +4,201 @@
  * Apple-style Scroll Reveals, Dynamic Calendar (.ics / Google), Ambient Petals
  */
 
+/* ==========================================================================
+   PŪRṆAM STUDIO LUXURY SECURITY & ANTI-TAMPER INTEGRITY GUARDIAN
+   Military-grade Client Protection:
+   1. Blocks Right-Click Context Menu & Inspect Element
+   2. Blocks F12, Ctrl+Shift+I/J/C, Ctrl+U (View Source), Ctrl+S
+   3. Real-time DevTools detection & anti-debugging trap
+   4. MutationObserver Integrity Guard: Instantly reverts unauthorized DOM/Text edits
+   5. Anti-Drag & Image Shielding
+   ========================================================================== */
+(function setupRoyalSecurityGuardian() {
+  'use strict';
+
+  // 1. Show elegant security notification badge
+  function showSecurityToast(message) {
+    if (!document.body) return;
+    let existingToast = document.getElementById('purnamSecurityToast');
+    if (!existingToast) {
+      existingToast = document.createElement('div');
+      existingToast.id = 'purnamSecurityToast';
+      existingToast.style.cssText = `
+        position: fixed;
+        bottom: 24px;
+        left: 50%;
+        transform: translateX(-50%) translateY(20px);
+        background: linear-gradient(135deg, rgba(30, 8, 15, 0.95), rgba(45, 12, 22, 0.95));
+        color: #F8E6A8;
+        padding: 12px 24px;
+        border-radius: 999px;
+        border: 1.5px solid #D4AF37;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 15px rgba(212,175,55,0.4);
+        font-family: 'Outfit', sans-serif;
+        font-size: 0.82rem;
+        letter-spacing: 0.5px;
+        z-index: 99999999;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+      `;
+      document.body.appendChild(existingToast);
+    }
+    existingToast.innerHTML = `<span>🔒</span> <strong>Pūrṇam Studio Guard:</strong> ${message}`;
+    existingToast.style.opacity = '1';
+    existingToast.style.transform = 'translateX(-50%) translateY(0)';
+    clearTimeout(existingToast._timer);
+    existingToast._timer = setTimeout(() => {
+      existingToast.style.opacity = '0';
+      existingToast.style.transform = 'translateX(-50%) translateY(20px)';
+    }, 2800);
+  }
+
+  // 2. Disable Right-Click Context Menu
+  document.addEventListener('contextmenu', (e) => {
+    e.preventDefault();
+    showSecurityToast('Sacred Wedding Content is Digitally Protected');
+    return false;
+  }, { capture: true });
+
+  // 3. Disable Developer Tools & Source Inspection Shortcuts
+  window.addEventListener('keydown', (e) => {
+    // F12 key
+    if (e.keyCode === 123 || e.key === 'F12') {
+      e.preventDefault();
+      e.stopPropagation();
+      showSecurityToast('Inspection shortcut is locked');
+      return false;
+    }
+    // Ctrl+Shift+I / Cmd+Option+I (Inspect)
+    // Ctrl+Shift+J / Cmd+Option+J (Console)
+    // Ctrl+Shift+C / Cmd+Option+C (Elements)
+    if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c')) {
+      e.preventDefault();
+      e.stopPropagation();
+      showSecurityToast('Developer tools are locked');
+      return false;
+    }
+    // Ctrl+U / Cmd+Option+U (View Source)
+    if ((e.ctrlKey || e.metaKey) && (e.key === 'u' || e.key === 'U')) {
+      e.preventDefault();
+      e.stopPropagation();
+      showSecurityToast('Source viewing is locked');
+      return false;
+    }
+    // Ctrl+S / Cmd+S (Save Page)
+    if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'S')) {
+      e.preventDefault();
+      e.stopPropagation();
+      return false;
+    }
+  }, { capture: true });
+
+  // 4. Disable Drag and Drop on Images & Text
+  document.addEventListener('dragstart', (e) => {
+    e.preventDefault();
+    return false;
+  }, { capture: true });
+
+  // 5. Anti-Debugging & Console Guard
+  try {
+    const bannerStyle = 'color: #D4AF37; font-size: 16px; font-weight: bold; background: #1F0D03; padding: 8px 16px; border: 2px solid #D4AF37; border-radius: 6px;';
+    console.log('%c🔒 SHUBH VIVAH • DIGITAL INTEGRITY GUARD ACTIVE', bannerStyle);
+    console.log('%cPresented by Pūrṇam Studio • All rights reserved 2026', 'color: #F8E6A8; font-size: 11px;');
+    const noop = () => {};
+    window.console.clear = noop;
+  } catch (err) {}
+
+  // 6. Active DevTools Debugger Trap (pauses debugger if DevTools is opened)
+  let devtoolsOpen = false;
+  const threshold = 160;
+  setInterval(() => {
+    const widthDiff = window.outerWidth - window.innerWidth > threshold;
+    const heightDiff = window.outerHeight - window.innerHeight > threshold;
+    if (widthDiff || heightDiff) {
+      if (!devtoolsOpen) {
+        devtoolsOpen = true;
+        showSecurityToast('Inspection environment detected. Page secured.');
+      }
+      (function() { return false; }['constructor']('debugger')());
+    } else {
+      devtoolsOpen = false;
+    }
+  }, 1000);
+
+  // 7. REAL-TIME DOM TAMPERING MONITOR (MutationObserver Auto-Revert)
+  document.addEventListener('DOMContentLoaded', () => {
+    const protectedSelectors = [
+      '#heroSection',
+      '#scratchSection',
+      '#itinerarySection',
+      '#venueSection',
+      '#topNavBar'
+    ];
+
+    const officialSnapshots = new Map();
+    protectedSelectors.forEach(sel => {
+      const el = document.querySelector(sel);
+      if (el) {
+        officialSnapshots.set(sel, el.cloneNode(true));
+      }
+    });
+
+    let isRestoring = false;
+
+    const integrityObserver = new MutationObserver((mutations) => {
+      if (isRestoring) return;
+
+      for (const mutation of mutations) {
+        for (const [sel, cleanNode] of officialSnapshots.entries()) {
+          const currentEl = document.querySelector(sel);
+          if (!currentEl) {
+            isRestoring = true;
+            integrityObserver.disconnect();
+            showSecurityToast('Unauthorized modification detected. Restoring original content...');
+            const mainExp = document.getElementById('mainExperience') || document.body;
+            mainExp.appendChild(cleanNode.cloneNode(true));
+            setTimeout(() => {
+              isRestoring = false;
+              integrityObserver.observe(document.body, { childList: true, subtree: true, characterData: true, attributes: true });
+            }, 100);
+            return;
+          }
+
+          if (currentEl.contains(mutation.target)) {
+            if (mutation.type === 'characterData' || mutation.type === 'childList') {
+              const cleanText = cleanNode.textContent.replace(/\s+/g, ' ').trim();
+              const currentText = currentEl.textContent.replace(/\s+/g, ' ').trim();
+              if (cleanText !== currentText) {
+                isRestoring = true;
+                integrityObserver.disconnect();
+                showSecurityToast('Unauthorized text edit blocked. Restoring official details.');
+                currentEl.replaceWith(cleanNode.cloneNode(true));
+                setTimeout(() => {
+                  isRestoring = false;
+                  integrityObserver.observe(document.body, { childList: true, subtree: true, characterData: true, attributes: true });
+                }, 100);
+                return;
+              }
+            }
+          }
+        }
+      }
+    });
+
+    integrityObserver.observe(document.body, {
+      childList: true,
+      subtree: true,
+      characterData: true,
+      attributes: true
+    });
+  });
+
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
 
   /* --------------------------------------------------------------------------

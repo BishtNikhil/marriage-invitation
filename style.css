@@ -2040,3 +2040,24 @@ body.scrolled-nav .audio-toggle-btn {
   letter-spacing: 2px;
   text-transform: uppercase;
 }
+
+/* ==========================================================================
+   DIGITAL INTEGRITY & CONTENT SECURITY (Anti-Copy / Anti-Drag)
+   ========================================================================== */
+body {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+img, svg, canvas {
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+
+input, textarea, button, a {
+  -webkit-user-select: auto;
+  user-select: auto;
+}
