@@ -459,7 +459,7 @@ document.addEventListener('DOMContentLoaded', () => {
      6. LIVE COUNTDOWN TIMER TO AUSPICIOUS WEDDING DATE
      -------------------------------------------------------------------------- */
   // Auspicious date: November 28, 2026 19:15:00 IST
-  const targetWeddingDate = new Date('2026-11-25T11:00:00+05:30').getTime();
+  const targetWeddingDate = new Date('2026-11-25T10:00:00+05:30').getTime();
 
   const cdDays = document.getElementById('cdDays');
   const cdHours = document.getElementById('cdHours');
@@ -501,10 +501,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // Event Details
   const eventDetails = {
     title: 'Shubh Vivah | Saurav Singh Bisht & Saumya Latwal Wedding Celebrations',
-    start: '20261125T053000Z', // 11:00 AM IST on 25 Nov
+    start: '20261125T043000Z', // 10:00 AM IST on 25 Nov
     end: '20261128T183000Z',   // Midnight on 28 Nov
     location: 'Lodhiya, Qwarab (Uttarakhand) & Radhe Krishna Vatika Najafgarh (New Delhi)',
-    description: 'Joyfully celebrating the wedding ceremonies of Saurav Singh Bisht (Son of Smt. Anita Bisht & Shri Rajinder Singh Bisht) and Saumya Latwal (Daughter of Smt. Tara Devi & Shri Anand Singh Latwal). Presented by Purnam Studio. 25 Nov: Haldi & Sangeet (Lodhiya) | 26 Nov: Shubh Vivah (Qwarab) | 28 Nov: Reception Gala (Radhe Krishna Vatika, Najafgarh, New Delhi).'
+    description: 'Joyfully celebrating the wedding ceremonies of Saurav Singh Bisht (Son of Smt. Anita Bisht & Shri Rajinder Singh Bisht) and Saumya Latwal. Presented by Purnam Studio. 25 Nov: Ganesh Puja (10 AM), Haldi (11 AM), Sangeet (2 PM) & Mehendi (6 PM) (Lodhiya) | 26 Nov: Departure of Baarat (10:30 AM), Shubh Vivah (Qwarab) | 28 Nov: Reception (7:30 PM) & Dinner (8:00 PM) (Radhe Krishna Vatika, Najafgarh, New Delhi).'
   };
 
   // Google Calendar URL
