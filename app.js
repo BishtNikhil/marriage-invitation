@@ -504,7 +504,7 @@ document.addEventListener('DOMContentLoaded', () => {
     start: '20261125T043000Z', // 10:00 AM IST on 25 Nov
     end: '20261128T183000Z',   // Midnight on 28 Nov
     location: 'Lodhiya, Qwarab (Uttarakhand) & Radhe Krishna Vatika Najafgarh (New Delhi)',
-    description: 'Joyfully celebrating the wedding ceremonies of Saurav Singh Bisht (Son of Smt. Anita Bisht & Shri Rajinder Singh Bisht) and Saumya Latwal. Presented by Purnam Studio. 25 Nov: Ganesh Puja (10 AM), Haldi (11 AM), Sangeet (2 PM) & Mehendi (6 PM) (Lodhiya) | 26 Nov: Departure of Baarat (10:30 AM), Shubh Vivah (Qwarab) | 28 Nov: Reception (7:30 PM) & Dinner (8:00 PM) (Radhe Krishna Vatika, Najafgarh, New Delhi).'
+    description: 'Joyfully celebrating the wedding ceremonies of Saurav Singh Bisht (Son of Smt. Anita Bisht & Shri Rajinder Singh Bisht) and Saumya Latwal. Presented by Purnam Studio. 25 Nov: Ganesh Puja (10 AM), Haldi (11 AM), Sangeet (2 PM) & Mehendi (6 PM) (Lodhiya) | 26 Nov: Departure of Baarat (10:30 AM), Varmala (1:00 PM), Saat Pheras (2:30 PM) (Qwarab) | 28 Nov: Reception (7:30 PM) & Dinner (8:00 PM) (Radhe Krishna Vatika, Najafgarh, New Delhi).'
   };
 
   // Google Calendar URL
