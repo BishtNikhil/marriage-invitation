@@ -1379,6 +1379,16 @@ body.gate-locked .top-nav-bar {
   padding: 24px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.venue-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
 }
 
 .venue-badge {
@@ -1390,7 +1400,8 @@ body.gate-locked .top-nav-bar {
   background: rgba(212, 175, 55, 0.15);
   padding: 4px 12px;
   border-radius: 12px;
-  margin-bottom: 8px;
+  margin: 0 auto 8px auto;
+  text-align: center;
 }
 
 .venue-name {
@@ -1399,6 +1410,7 @@ body.gate-locked .top-nav-bar {
   font-weight: 700;
   color: var(--text-main);
   margin-bottom: 6px;
+  text-align: center;
 }
 
 .venue-address {
@@ -1406,6 +1418,7 @@ body.gate-locked .top-nav-bar {
   color: var(--text-muted);
   line-height: 1.5;
   margin-bottom: 16px;
+  text-align: center;
 }
 
 .map-embed-wrapper {
@@ -1427,15 +1440,18 @@ body.gate-locked .top-nav-bar {
 
 .venue-actions {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  text-align: center;
 }
 
 .map-direct-btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   background: linear-gradient(135deg, #FFF9EB 0%, #F5DEB0 100%);
   border: 1px solid var(--gold-primary);
@@ -1457,6 +1473,7 @@ body.gate-locked .top-nav-bar {
   font-size: 0.78rem;
   color: var(--text-light);
   font-weight: 500;
+  text-align: center;
 }
 
 /* --------------------------------------------------------------------------
@@ -1667,6 +1684,11 @@ body.gate-locked .top-nav-bar {
   border-radius: 20px;
   padding: 28px;
   box-shadow: var(--card-shadow);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .l-card-title {
@@ -1675,6 +1697,7 @@ body.gate-locked .top-nav-bar {
   font-weight: 700;
   color: var(--primary-accent-dark);
   margin-bottom: 4px;
+  text-align: center;
 }
 
 .l-card-sub {
@@ -1683,24 +1706,37 @@ body.gate-locked .top-nav-bar {
   font-weight: 600;
   letter-spacing: 1px;
   margin-bottom: 16px;
+  text-align: center;
 }
 
 .lineage-list {
   list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
 }
 .lineage-list li {
   font-size: 0.88rem;
   line-height: 1.8;
   color: var(--text-muted);
   position: relative;
-  padding-left: 18px;
+  padding-left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
 }
 .lineage-list li::before {
   content: "❖";
-  position: absolute;
-  left: 0;
+  position: static;
   font-size: 0.7rem;
   color: var(--gold-primary);
+  flex-shrink: 0;
 }
 
 .children-card {
@@ -1709,17 +1745,21 @@ body.gate-locked .top-nav-bar {
   border: 1px dashed var(--primary-accent);
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
+  text-align: center;
 }
 
 .child-balloon {
   font-size: 2rem;
   margin-bottom: 8px;
+  text-align: center;
 }
 
 .children-note {
   color: var(--primary-accent);
   font-size: 1.15rem;
+  text-align: center;
 }
 
 .child-quote {
@@ -1729,12 +1769,14 @@ body.gate-locked .top-nav-bar {
   color: var(--text-main);
   line-height: 1.5;
   margin: 10px 0;
+  text-align: center;
 }
 
 .child-names {
   font-size: 0.82rem;
   font-weight: 600;
   color: var(--primary-accent-dark);
+  text-align: center;
 }
 
 @media (max-width: 768px) {
@@ -1860,6 +1902,7 @@ body.gate-locked .top-nav-bar {
   font-weight: 700;
   color: var(--primary-accent);
   margin: 4px 0 8px;
+  text-align: center;
 }
 
 .footer-studio-credit {
