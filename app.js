@@ -5,18 +5,16 @@
  */
 
 /* ==========================================================================
-   PŪRṆAM STUDIO LUXURY SECURITY & ANTI-TAMPER INTEGRITY GUARDIAN
-   Military-grade Client Protection:
+   PŪRṆAM STUDIO LUXURY SECURITY & CONTENT PROTECTION GUARDIAN
    1. Blocks Right-Click Context Menu & Inspect Element
    2. Blocks F12, Ctrl+Shift+I/J/C, Ctrl+U (View Source), Ctrl+S
-   3. Real-time DevTools detection & anti-debugging trap
-   4. MutationObserver Integrity Guard: Instantly reverts unauthorized DOM/Text edits
-   5. Anti-Drag & Image Shielding
+   3. Anti-Drag & Image Shielding
+   4. Console Protection
    ========================================================================== */
 (function setupRoyalSecurityGuardian() {
   'use strict';
 
-  // 1. Show elegant security notification badge
+  // 1. Elegant Security Notification Badge
   function showSecurityToast(message) {
     if (!document.body) return;
     let existingToast = document.getElementById('purnamSecurityToast');
@@ -103,7 +101,7 @@
     return false;
   }, { capture: true });
 
-  // 5. Anti-Debugging & Console Guard
+  // 5. Console Protection
   try {
     const bannerStyle = 'color: #D4AF37; font-size: 16px; font-weight: bold; background: #1F0D03; padding: 8px 16px; border: 2px solid #D4AF37; border-radius: 6px;';
     console.log('%c🔒 SHUBH VIVAH • DIGITAL INTEGRITY GUARD ACTIVE', bannerStyle);
@@ -111,91 +109,6 @@
     const noop = () => {};
     window.console.clear = noop;
   } catch (err) {}
-
-  // 6. Active DevTools Debugger Trap (pauses debugger if DevTools is opened)
-  let devtoolsOpen = false;
-  const threshold = 160;
-  setInterval(() => {
-    const widthDiff = window.outerWidth - window.innerWidth > threshold;
-    const heightDiff = window.outerHeight - window.innerHeight > threshold;
-    if (widthDiff || heightDiff) {
-      if (!devtoolsOpen) {
-        devtoolsOpen = true;
-        showSecurityToast('Inspection environment detected. Page secured.');
-      }
-      (function() { return false; }['constructor']('debugger')());
-    } else {
-      devtoolsOpen = false;
-    }
-  }, 1000);
-
-  // 7. REAL-TIME DOM TAMPERING MONITOR (MutationObserver Auto-Revert)
-  document.addEventListener('DOMContentLoaded', () => {
-    const protectedSelectors = [
-      '#heroSection',
-      '#scratchSection',
-      '#itinerarySection',
-      '#venueSection',
-      '#topNavBar'
-    ];
-
-    const officialSnapshots = new Map();
-    protectedSelectors.forEach(sel => {
-      const el = document.querySelector(sel);
-      if (el) {
-        officialSnapshots.set(sel, el.cloneNode(true));
-      }
-    });
-
-    let isRestoring = false;
-
-    const integrityObserver = new MutationObserver((mutations) => {
-      if (isRestoring) return;
-
-      for (const mutation of mutations) {
-        for (const [sel, cleanNode] of officialSnapshots.entries()) {
-          const currentEl = document.querySelector(sel);
-          if (!currentEl) {
-            isRestoring = true;
-            integrityObserver.disconnect();
-            showSecurityToast('Unauthorized modification detected. Restoring original content...');
-            const mainExp = document.getElementById('mainExperience') || document.body;
-            mainExp.appendChild(cleanNode.cloneNode(true));
-            setTimeout(() => {
-              isRestoring = false;
-              integrityObserver.observe(document.body, { childList: true, subtree: true, characterData: true, attributes: true });
-            }, 100);
-            return;
-          }
-
-          if (currentEl.contains(mutation.target)) {
-            if (mutation.type === 'characterData' || mutation.type === 'childList') {
-              const cleanText = cleanNode.textContent.replace(/\s+/g, ' ').trim();
-              const currentText = currentEl.textContent.replace(/\s+/g, ' ').trim();
-              if (cleanText !== currentText) {
-                isRestoring = true;
-                integrityObserver.disconnect();
-                showSecurityToast('Unauthorized text edit blocked. Restoring official details.');
-                currentEl.replaceWith(cleanNode.cloneNode(true));
-                setTimeout(() => {
-                  isRestoring = false;
-                  integrityObserver.observe(document.body, { childList: true, subtree: true, characterData: true, attributes: true });
-                }, 100);
-                return;
-              }
-            }
-          }
-        }
-      }
-    });
-
-    integrityObserver.observe(document.body, {
-      childList: true,
-      subtree: true,
-      characterData: true,
-      attributes: true
-    });
-  });
 
 })();
 
