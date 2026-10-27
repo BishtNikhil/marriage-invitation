@@ -1404,6 +1404,18 @@ body.scrolled-nav .audio-toggle-btn {
 .ceremony-card:hover .ceremony-img {
   transform: scale(1.05);
 }
+.ceremony-card:nth-child(1) .ceremony-img {
+  object-position: center 32%;
+}
+.ceremony-card:nth-child(2) .ceremony-img {
+  object-position: center 22%;
+}
+.ceremony-card:nth-child(3) .ceremony-img {
+  object-position: center 18%;
+}
+.ceremony-card:nth-child(4) .ceremony-img {
+  object-position: center 15%;
+}
 
 .ceremony-body {
   padding: 24px 20px;
