@@ -298,6 +298,15 @@ document.addEventListener('DOMContentLoaded', () => {
   if (doorLeft) doorLeft.addEventListener('click', triggerDoorOpen);
   if (doorRight) doorRight.addEventListener('click', triggerDoorOpen);
 
+  const doorWaxSealBtn = document.getElementById('doorWaxSealBtn');
+  if (doorWaxSealBtn) {
+    doorWaxSealBtn.addEventListener('click', (e) => {
+      const rect = doorWaxSealBtn.getBoundingClientRect();
+      fireConfetti(rect.left + rect.width / 2, rect.top + rect.height / 2, 45);
+      triggerDoorOpen();
+    });
+  }
+
   /* --------------------------------------------------------------------------
      4. APPLE-STYLE SCROLL REVEAL OBSERVER
      -------------------------------------------------------------------------- */
