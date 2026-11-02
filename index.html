@@ -131,30 +131,30 @@
                 <svg class="knob-ribbon-svg svg-left" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <defs>
                     <radialGradient id="brassRosetteL" cx="42" cy="46" r="16" gradientUnits="userSpaceOnUse">
-                      <stop offset="0%" stop-color="#FFFFFF"/>
-                      <stop offset="30%" stop-color="#F5EBD7"/>
-                      <stop offset="65%" stop-color="#C5B28E"/>
-                      <stop offset="100%" stop-color="#544834"/>
+                      <stop offset="0%" stop-color="#FFF9D2"/>
+                      <stop offset="30%" stop-color="#F2D065"/>
+                      <stop offset="65%" stop-color="#C69E24"/>
+                      <stop offset="100%" stop-color="#6A4E08"/>
                     </radialGradient>
                     <linearGradient id="brassRingL" x1="26" y1="36" x2="58" y2="76" gradientUnits="userSpaceOnUse">
-                      <stop offset="0%" stop-color="#FFFDF5"/>
-                      <stop offset="28%" stop-color="#E5D6BA"/>
-                      <stop offset="55%" stop-color="#7A684C"/>
-                      <stop offset="85%" stop-color="#F2E6D0"/>
-                      <stop offset="100%" stop-color="#3C3222"/>
+                      <stop offset="0%" stop-color="#FFF4B8"/>
+                      <stop offset="28%" stop-color="#E5C158"/>
+                      <stop offset="55%" stop-color="#966D12"/>
+                      <stop offset="85%" stop-color="#FFDF78"/>
+                      <stop offset="100%" stop-color="#553A04"/>
                     </linearGradient>
-                    <linearGradient id="crimsonSilkL" x1="0" y1="38" x2="0" y2="110" gradientUnits="userSpaceOnUse">
-                      <stop offset="0%" stop-color="#F7D2D9"/>
-                      <stop offset="22%" stop-color="#D47387"/>
-                      <stop offset="52%" stop-color="#9C3B50"/>
-                      <stop offset="82%" stop-color="#6E1E2E"/>
-                      <stop offset="100%" stop-color="#420D18"/>
+                    <linearGradient id="silverSilkL" x1="0" y1="38" x2="0" y2="110" gradientUnits="userSpaceOnUse">
+                      <stop offset="0%" stop-color="#FFFFFF"/>
+                      <stop offset="18%" stop-color="#F1F5F9"/>
+                      <stop offset="42%" stop-color="#D8E2EC"/>
+                      <stop offset="72%" stop-color="#A4B3C6"/>
+                      <stop offset="100%" stop-color="#5B6A7E"/>
                     </linearGradient>
-                    <linearGradient id="goldThreadL" x1="0" y1="0" x2="120" y2="0" gradientUnits="userSpaceOnUse">
-                      <stop offset="0%" stop-color="#FFFDF7"/>
-                      <stop offset="35%" stop-color="#F5EBDA"/>
-                      <stop offset="70%" stop-color="#D5C4A4"/>
-                      <stop offset="100%" stop-color="#FFFDF7"/>
+                    <linearGradient id="redBorderL" x1="0" y1="0" x2="120" y2="0" gradientUnits="userSpaceOnUse">
+                      <stop offset="0%" stop-color="#FF2E4C"/>
+                      <stop offset="25%" stop-color="#D90429"/>
+                      <stop offset="65%" stop-color="#9A031E"/>
+                      <stop offset="100%" stop-color="#FF2E4C"/>
                     </linearGradient>
                     <filter id="shadowL" x="-10" y="-10" width="140" height="140" filterUnits="userSpaceOnUse">
                       <feDropShadow dx="1" dy="3" stdDeviation="2.5" flood-color="#000000" flood-opacity="0.65"/>
@@ -162,30 +162,30 @@
                   </defs>
                   <!-- 1. Rosette Backplate -->
                   <g filter="url(#shadowL)">
-                    <circle cx="42" cy="46" r="16" fill="url(#brassRosetteL)" stroke="#F5EBDA" stroke-width="1.2"/>
-                    <circle cx="42" cy="46" r="13" fill="none" stroke="#6E5F45" stroke-width="0.8" stroke-dasharray="2 1.5"/>
+                    <circle cx="42" cy="46" r="16" fill="url(#brassRosetteL)" stroke="#FFDF78" stroke-width="1.2"/>
+                    <circle cx="42" cy="46" r="13" fill="none" stroke="#9A031E" stroke-width="0.9" stroke-dasharray="2 1.5"/>
                     <circle cx="42" cy="46" r="9" fill="url(#brassRosetteL)"/>
-                    <circle cx="42" cy="46" r="5" fill="#FFFDF7" stroke="#7A684C" stroke-width="1"/>
+                    <circle cx="42" cy="46" r="5" fill="#FFF4B8" stroke="#6A4E08" stroke-width="1"/>
                   </g>
                   <!-- 2. Knocker Ring (Back Arc) -->
                   <path d="M 27 50 A 15 17 0 0 1 57 50" stroke="url(#brassRingL)" stroke-width="4.5" stroke-linecap="round" fill="none" filter="url(#shadowL)"/>
                   <!-- 3. Ribbon Loop passing THROUGH ring hole -->
-                  <path d="M 34 46 C 34 38, 50 38, 50 46 L 49 56 C 49 57, 35 57, 35 56 Z" fill="url(#crimsonSilkL)"/>
+                  <path d="M 34 46 C 34 38, 50 38, 50 46 L 49 56 C 49 57, 35 57, 35 56 Z" fill="url(#silverSilkL)"/>
                   <!-- 4. Knocker Ring (Front Arc) -->
                   <path d="M 27 50 A 15 17 0 0 0 57 50" stroke="url(#brassRingL)" stroke-width="4.5" stroke-linecap="round" fill="none" filter="url(#shadowL)"/>
                   <!-- 5. Ribbon Knot wrapping OVER bottom of ring -->
-                  <path d="M 32 54 C 32 50, 52 50, 52 54 L 51 64 C 51 68, 33 68, 33 64 Z" fill="url(#crimsonSilkL)" filter="url(#shadowL)"/>
-                  <path d="M 37 53 C 37 51, 47 51, 47 53 L 46 65 C 46 67, 38 67, 38 65 Z" fill="#8E3E4F" stroke="url(#goldThreadL)" stroke-width="1"/>
-                  <!-- 6. Hanging Ribbon Tail with Swallowtail V-Cut -->
-                  <path d="M 33 64 L 30 106 L 41 97 L 51 106 L 48 64 Z" fill="url(#crimsonSilkL)" filter="url(#shadowL)"/>
-                  <path d="M 33 64 L 30 106 L 41 97 L 51 106 L 48 64" stroke="url(#goldThreadL)" stroke-width="1.3" fill="none"/>
-                  <path d="M 41 64 L 41 97" stroke="rgba(0, 0, 0, 0.35)" stroke-width="1.5"/>
-                  <path d="M 41.8 64 L 41.8 97" stroke="rgba(255, 248, 235, 0.45)" stroke-width="0.8"/>
-                  <!-- 7. Spanning Silk Ribbon Sash (connecting to center seam at x=120) -->
-                  <path d="M 46 54 C 65 57, 92 58, 120 57 L 120 74 C 92 75, 65 74, 45 70 Z" fill="url(#crimsonSilkL)" filter="url(#shadowL)"/>
-                  <path d="M 46 54 C 65 57, 92 58, 120 57" stroke="url(#goldThreadL)" stroke-width="1.6" fill="none"/>
-                  <path d="M 45 70 C 65 74, 92 75, 120 74" stroke="url(#goldThreadL)" stroke-width="1.6" fill="none"/>
-                  <path d="M 68 56 C 76 62, 85 68, 92 75" stroke="rgba(255, 248, 235, 0.4)" stroke-width="1.8" stroke-linecap="round"/>
+                  <path d="M 32 54 C 32 50, 52 50, 52 54 L 51 64 C 51 68, 33 68, 33 64 Z" fill="url(#silverSilkL)" filter="url(#shadowL)"/>
+                  <path d="M 37 53 C 37 51, 47 51, 47 53 L 46 65 C 46 67, 38 67, 38 65 Z" fill="#D90429" stroke="url(#redBorderL)" stroke-width="1"/>
+                  <!-- 6. Hanging Ribbon Tail with Swallowtail V-Cut & Red Boundary -->
+                  <path d="M 33 64 L 30 106 L 41 97 L 51 106 L 48 64 Z" fill="url(#silverSilkL)" filter="url(#shadowL)"/>
+                  <path d="M 33 64 L 30 106 L 41 97 L 51 106 L 48 64" stroke="url(#redBorderL)" stroke-width="1.8" fill="none"/>
+                  <path d="M 41 64 L 41 97" stroke="rgba(154, 3, 30, 0.45)" stroke-width="1.2"/>
+                  <path d="M 41.8 64 L 41.8 97" stroke="rgba(255, 255, 255, 0.75)" stroke-width="0.8"/>
+                  <!-- 7. Spanning Silk Ribbon Sash with Red Boundary (connecting to center seam at x=120) -->
+                  <path d="M 46 54 C 65 57, 92 58, 120 57 L 120 74 C 92 75, 65 74, 45 70 Z" fill="url(#silverSilkL)" filter="url(#shadowL)"/>
+                  <path d="M 46 54 C 65 57, 92 58, 120 57" stroke="url(#redBorderL)" stroke-width="2" fill="none"/>
+                  <path d="M 45 70 C 65 74, 92 75, 120 74" stroke="url(#redBorderL)" stroke-width="2" fill="none"/>
+                  <path d="M 68 56 C 76 62, 85 68, 92 75" stroke="rgba(255, 255, 255, 0.7)" stroke-width="1.8" stroke-linecap="round"/>
                 </svg>
               </div>
               <div class="wood-sheen"></div>
@@ -204,30 +204,30 @@
                 <svg class="knob-ribbon-svg svg-right" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <defs>
                     <radialGradient id="brassRosetteR" cx="78" cy="46" r="16" gradientUnits="userSpaceOnUse">
-                      <stop offset="0%" stop-color="#FFFFFF"/>
-                      <stop offset="30%" stop-color="#F5EBD7"/>
-                      <stop offset="65%" stop-color="#C5B28E"/>
-                      <stop offset="100%" stop-color="#544834"/>
+                      <stop offset="0%" stop-color="#FFF9D2"/>
+                      <stop offset="30%" stop-color="#F2D065"/>
+                      <stop offset="65%" stop-color="#C69E24"/>
+                      <stop offset="100%" stop-color="#6A4E08"/>
                     </radialGradient>
                     <linearGradient id="brassRingR" x1="62" y1="36" x2="94" y2="76" gradientUnits="userSpaceOnUse">
-                      <stop offset="0%" stop-color="#FFFDF5"/>
-                      <stop offset="28%" stop-color="#E5D6BA"/>
-                      <stop offset="55%" stop-color="#7A684C"/>
-                      <stop offset="85%" stop-color="#F2E6D0"/>
-                      <stop offset="100%" stop-color="#3C3222"/>
+                      <stop offset="0%" stop-color="#FFF4B8"/>
+                      <stop offset="28%" stop-color="#E5C158"/>
+                      <stop offset="55%" stop-color="#966D12"/>
+                      <stop offset="85%" stop-color="#FFDF78"/>
+                      <stop offset="100%" stop-color="#553A04"/>
                     </linearGradient>
-                    <linearGradient id="crimsonSilkR" x1="0" y1="38" x2="0" y2="110" gradientUnits="userSpaceOnUse">
-                      <stop offset="0%" stop-color="#F7D2D9"/>
-                      <stop offset="22%" stop-color="#D47387"/>
-                      <stop offset="52%" stop-color="#9C3B50"/>
-                      <stop offset="82%" stop-color="#6E1E2E"/>
-                      <stop offset="100%" stop-color="#420D18"/>
+                    <linearGradient id="silverSilkR" x1="0" y1="38" x2="0" y2="110" gradientUnits="userSpaceOnUse">
+                      <stop offset="0%" stop-color="#FFFFFF"/>
+                      <stop offset="18%" stop-color="#F1F5F9"/>
+                      <stop offset="42%" stop-color="#D8E2EC"/>
+                      <stop offset="72%" stop-color="#A4B3C6"/>
+                      <stop offset="100%" stop-color="#5B6A7E"/>
                     </linearGradient>
-                    <linearGradient id="goldThreadR" x1="0" y1="0" x2="120" y2="0" gradientUnits="userSpaceOnUse">
-                      <stop offset="0%" stop-color="#FFFDF7"/>
-                      <stop offset="35%" stop-color="#F5EBDA"/>
-                      <stop offset="70%" stop-color="#D5C4A4"/>
-                      <stop offset="100%" stop-color="#FFFDF7"/>
+                    <linearGradient id="redBorderR" x1="0" y1="0" x2="120" y2="0" gradientUnits="userSpaceOnUse">
+                      <stop offset="0%" stop-color="#FF2E4C"/>
+                      <stop offset="25%" stop-color="#D90429"/>
+                      <stop offset="65%" stop-color="#9A031E"/>
+                      <stop offset="100%" stop-color="#FF2E4C"/>
                     </linearGradient>
                     <filter id="shadowR" x="-10" y="-10" width="140" height="140" filterUnits="userSpaceOnUse">
                       <feDropShadow dx="-1" dy="3" stdDeviation="2.5" flood-color="#000000" flood-opacity="0.65"/>
@@ -235,30 +235,30 @@
                   </defs>
                   <!-- 1. Rosette Backplate -->
                   <g filter="url(#shadowR)">
-                    <circle cx="78" cy="46" r="16" fill="url(#brassRosetteR)" stroke="#F5EBDA" stroke-width="1.2"/>
-                    <circle cx="78" cy="46" r="13" fill="none" stroke="#6E5F45" stroke-width="0.8" stroke-dasharray="2 1.5"/>
+                    <circle cx="78" cy="46" r="16" fill="url(#brassRosetteR)" stroke="#FFDF78" stroke-width="1.2"/>
+                    <circle cx="78" cy="46" r="13" fill="none" stroke="#9A031E" stroke-width="0.9" stroke-dasharray="2 1.5"/>
                     <circle cx="78" cy="46" r="9" fill="url(#brassRosetteR)"/>
-                    <circle cx="78" cy="46" r="5" fill="#FFFDF7" stroke="#7A684C" stroke-width="1"/>
+                    <circle cx="78" cy="46" r="5" fill="#FFF4B8" stroke="#6A4E08" stroke-width="1"/>
                   </g>
                   <!-- 2. Knocker Ring (Back Arc) -->
                   <path d="M 63 50 A 15 17 0 0 1 93 50" stroke="url(#brassRingR)" stroke-width="4.5" stroke-linecap="round" fill="none" filter="url(#shadowR)"/>
                   <!-- 3. Ribbon Loop passing THROUGH ring hole -->
-                  <path d="M 70 46 C 70 38, 86 38, 86 46 L 85 56 C 85 57, 71 57, 71 56 Z" fill="url(#crimsonSilkR)"/>
+                  <path d="M 70 46 C 70 38, 86 38, 86 46 L 85 56 C 85 57, 71 57, 71 56 Z" fill="url(#silverSilkR)"/>
                   <!-- 4. Knocker Ring (Front Arc) -->
                   <path d="M 63 50 A 15 17 0 0 0 93 50" stroke="url(#brassRingR)" stroke-width="4.5" stroke-linecap="round" fill="none" filter="url(#shadowR)"/>
                   <!-- 5. Ribbon Knot wrapping OVER bottom of ring -->
-                  <path d="M 68 54 C 68 50, 88 50, 88 54 L 87 64 C 87 68, 69 68, 69 64 Z" fill="url(#crimsonSilkR)" filter="url(#shadowR)"/>
-                  <path d="M 73 53 C 73 51, 83 51, 83 53 L 82 65 C 82 67, 74 67, 74 65 Z" fill="#8E3E4F" stroke="url(#goldThreadR)" stroke-width="1"/>
-                  <!-- 6. Hanging Ribbon Tail with Swallowtail V-Cut -->
-                  <path d="M 72 64 L 69 106 L 79 97 L 90 106 L 87 64 Z" fill="url(#crimsonSilkR)" filter="url(#shadowR)"/>
-                  <path d="M 72 64 L 69 106 L 79 97 L 90 106 L 87 64" stroke="url(#goldThreadR)" stroke-width="1.3" fill="none"/>
-                  <path d="M 79 64 L 79 97" stroke="rgba(0, 0, 0, 0.35)" stroke-width="1.5"/>
-                  <path d="M 79.8 64 L 79.8 97" stroke="rgba(255, 248, 235, 0.45)" stroke-width="0.8"/>
-                  <!-- 7. Spanning Silk Ribbon Sash (connecting from center seam at x=0 to knob at x=74) -->
-                  <path d="M 0 57 C 28 58, 55 57, 74 54 L 75 70 C 55 74, 28 75, 0 74 Z" fill="url(#crimsonSilkR)" filter="url(#shadowR)"/>
-                  <path d="M 0 57 C 28 58, 55 57, 74 54" stroke="url(#goldThreadR)" stroke-width="1.6" fill="none"/>
-                  <path d="M 0 74 C 28 75, 55 74, 75 70" stroke="url(#goldThreadR)" stroke-width="1.6" fill="none"/>
-                  <path d="M 28 75 C 35 68, 44 62, 52 56" stroke="rgba(255, 248, 235, 0.4)" stroke-width="1.8" stroke-linecap="round"/>
+                  <path d="M 68 54 C 68 50, 88 50, 88 54 L 87 64 C 87 68, 69 68, 69 64 Z" fill="url(#silverSilkR)" filter="url(#shadowR)"/>
+                  <path d="M 73 53 C 73 51, 83 51, 83 53 L 82 65 C 82 67, 74 67, 74 65 Z" fill="#D90429" stroke="url(#redBorderR)" stroke-width="1"/>
+                  <!-- 6. Hanging Ribbon Tail with Swallowtail V-Cut & Red Boundary -->
+                  <path d="M 72 64 L 69 106 L 79 97 L 90 106 L 87 64 Z" fill="url(#silverSilkR)" filter="url(#shadowR)"/>
+                  <path d="M 72 64 L 69 106 L 79 97 L 90 106 L 87 64" stroke="url(#redBorderR)" stroke-width="1.8" fill="none"/>
+                  <path d="M 79 64 L 79 97" stroke="rgba(154, 3, 30, 0.45)" stroke-width="1.2"/>
+                  <path d="M 79.8 64 L 79.8 97" stroke="rgba(255, 255, 255, 0.75)" stroke-width="0.8"/>
+                  <!-- 7. Spanning Silk Ribbon Sash with Red Boundary (connecting from center seam at x=0 to knob at x=74) -->
+                  <path d="M 0 57 C 28 58, 55 57, 74 54 L 75 70 C 55 74, 28 75, 0 74 Z" fill="url(#silverSilkR)" filter="url(#shadowR)"/>
+                  <path d="M 0 57 C 28 58, 55 57, 74 54" stroke="url(#redBorderR)" stroke-width="2" fill="none"/>
+                  <path d="M 0 74 C 28 75, 55 74, 75 70" stroke="url(#redBorderR)" stroke-width="2" fill="none"/>
+                  <path d="M 28 75 C 35 68, 44 62, 52 56" stroke="rgba(255, 255, 255, 0.7)" stroke-width="1.8" stroke-linecap="round"/>
                 </svg>
               </div>
               <div class="wood-sheen"></div>

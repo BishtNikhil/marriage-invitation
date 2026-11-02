@@ -644,9 +644,9 @@ body.scrolled-nav .audio-toggle-btn {
   width: 76px;
   height: 76px;
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, #B8354D 0%, #8E2338 45%, #5C0F1E 80%, #36050F 100%);
-  border: 2.5px solid #F2E4CA;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.75), 0 0 25px rgba(184, 53, 77, 0.55), inset 0 2px 5px rgba(255, 255, 255, 0.45);
+  background: radial-gradient(circle at 35% 35%, #FFFDF2 0%, #FFE994 25%, #E0BA4A 55%, #B38622 80%, #6E4909 100%);
+  border: 3.5px double #D90429;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.75), 0 0 25px rgba(224, 186, 74, 0.65), 0 0 0 2px #9A031E, inset 0 2px 6px rgba(255, 255, 255, 0.85);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -659,12 +659,12 @@ body.scrolled-nav .audio-toggle-btn {
 
 .royal-wax-seal-disc:hover {
   transform: scale(1.08) rotate(4deg);
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.85), 0 0 40px rgba(212, 115, 135, 0.75);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.85), 0 0 40px rgba(212, 175, 55, 0.9), 0 0 0 2.5px #D90429;
 }
 
 @keyframes pulseWaxSeal {
-  0%, 100% { box-shadow: 0 10px 30px rgba(0, 0, 0, 0.75), 0 0 20px rgba(184, 53, 77, 0.5); }
-  50% { box-shadow: 0 12px 35px rgba(0, 0, 0, 0.8), 0 0 35px rgba(212, 115, 135, 0.7); }
+  0%, 100% { box-shadow: 0 10px 30px rgba(0, 0, 0, 0.75), 0 0 20px rgba(212, 175, 55, 0.65), 0 0 0 2px #9A031E; }
+  50% { box-shadow: 0 12px 35px rgba(0, 0, 0, 0.8), 0 0 35px rgba(255, 223, 120, 0.9), 0 0 0 2.5px #D90429; }
 }
 
 .doors-chamber.open .door-wax-seal-junction {
@@ -677,8 +677,8 @@ body.scrolled-nav .audio-toggle-btn {
   font-family: var(--font-decorative);
   font-size: 1.25rem;
   font-weight: 900;
-  color: #FFFDF7;
-  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.9), 0 0 8px rgba(255, 250, 240, 0.85);
+  color: #8E0D22;
+  text-shadow: 0 1px 2px rgba(255, 245, 200, 0.9), 0 -1px 1px rgba(74, 5, 14, 0.7);
   line-height: 1;
 }
 
@@ -687,9 +687,9 @@ body.scrolled-nav .audio-toggle-btn {
   font-weight: 800;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: #F4E8D4;
+  color: #9A031E;
   margin-top: 3px;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+  text-shadow: 0 1px 1px rgba(255, 245, 200, 0.85);
 }
 
 /* Central Cascading Silk Ribbon Tails under Wax Seal */
@@ -706,9 +706,9 @@ body.scrolled-nav .audio-toggle-btn {
 .center-tail {
   width: 16px;
   height: 46px;
-  background: linear-gradient(180deg, #D47387 0%, #9C3B50 50%, #4D0F1B 100%);
-  border-left: 1.5px solid #F2E4CA;
-  border-right: 1.5px solid #F2E4CA;
+  background: linear-gradient(180deg, #FFFFFF 0%, #E2E8F0 25%, #CBD5E1 55%, #94A3B8 85%, #5B6A7E 100%);
+  border-left: 2px solid #D90429;
+  border-right: 2px solid #D90429;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 50% calc(100% - 9px), 0 100%);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
   filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
