@@ -138,6 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function toggleAudio() {
     if (!audio) return;
+    if (!gateOpened) return; // Disallow toggling music before the royal doors are open
     if (isPlaying) {
       audio.pause();
       isPlaying = false;
@@ -264,8 +265,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 500);
     }
 
-    // 5. Reveal main wedding experience gracefully from behind the doors
+    // 5. Reveal main wedding experience & top bar gracefully from behind the doors
     setTimeout(() => {
+      document.body.classList.remove('gate-locked');
       if (mainExperience) {
         mainExperience.classList.add('revealing');
       }
@@ -274,7 +276,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 6. Complete transition: unlock body scroll at absolute top
     setTimeout(() => {
-      document.body.classList.remove('gate-locked');
       if (gateStage) {
         gateStage.style.display = 'none';
       }
