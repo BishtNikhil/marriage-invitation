@@ -1480,8 +1480,10 @@ body.scrolled-nav .audio-toggle-btn {
 .ceremony-img-wrap {
   position: relative;
   width: 100%;
-  height: 220px;
+  aspect-ratio: 4 / 5;
+  min-height: 280px;
   overflow: hidden;
+  background: #fdfbf7;
 }
 
 .ceremony-img {
@@ -1495,10 +1497,10 @@ body.scrolled-nav .audio-toggle-btn {
   transform: scale(1.05);
 }
 .ceremony-card:nth-child(1) .ceremony-img {
-  object-position: center 32%;
+  object-position: center 25%;
 }
 .ceremony-card:nth-child(2) .ceremony-img {
-  object-position: center 22%;
+  object-position: center 20%;
 }
 .ceremony-card:nth-child(3) .ceremony-img {
   object-position: center 18%;
@@ -2166,4 +2168,79 @@ input, textarea, button, a {
     transform: translate(-50%, -50%) scale(0.82);
   }
 }
+
+/* ==========================================================================
+   MOBILE & PHONE SCREEN FULL-SIZE CEREMONY CARDS & IMAGES (@media max-width: 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .ceremonies-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .ceremony-card {
+    border-radius: 24px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+  }
+
+  /* Allow ceremony image to display at full natural height with zero cropping on phones */
+  .ceremony-img-wrap {
+    width: 100%;
+    height: auto !important;
+    min-height: unset !important;
+    max-height: none !important;
+    aspect-ratio: auto !important;
+    overflow: hidden;
+    background: #fdfaf5;
+  }
+
+  .ceremony-img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    display: block;
+    object-fit: cover;
+    object-position: center !important;
+  }
+
+  .ceremony-card:nth-child(1) .ceremony-img,
+  .ceremony-card:nth-child(2) .ceremony-img,
+  .ceremony-card:nth-child(3) .ceremony-img,
+  .ceremony-card:nth-child(4) .ceremony-img {
+    object-position: center !important;
+  }
+
+  .ceremony-card:hover .ceremony-img {
+    transform: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-wedding-experience {
+    padding: 72px 14px 60px;
+  }
+
+  .ceremonies-grid {
+    gap: 24px;
+  }
+
+  .ceremony-card-header {
+    font-size: 0.72rem;
+    padding: 10px 14px;
+    letter-spacing: 1.2px;
+  }
+
+  .ceremony-body {
+    padding: 22px 18px;
+  }
+
+  .c-title {
+    font-size: 1.25rem;
+  }
+
+  .c-desc {
+    font-size: 0.88rem;
+  }
+}
+
 
