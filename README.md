@@ -4,8 +4,6 @@
 > Saurav Singh Bisht (Son of Smt. Anita Bisht & Shri Rajinder Singh Bisht)  
 > *weds*  
 > Saumya Latwal (Daughter of Smt. Tara Devi & Shri Anand Singh Latwal)  
->  
-> Presented by **Pūrṇam Studio** ✨
 
 ---
 
@@ -51,4 +49,3 @@ To redeploy or update manually:
 npx vercel --prod
 ```
 
-Architected with devotion by **Pūrṇam Studio** © 2026.

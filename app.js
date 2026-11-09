@@ -1,11 +1,11 @@
 /**
  * SHUBH VIVAH LUXURY MODERN PASTEL MARRIAGE CARD
- * Core Application Engine: 120Hz 3D Gate, Canvas Scratch Reveal,
- * Apple-style Scroll Reveals, Dynamic Calendar (.ics / Google), Ambient Petals
+ * Core Application Engine: 120Hz 3D Gate,
+ * Apple-style Scroll Reveals, Ambient Petals
  */
 
 /* ==========================================================================
-   PŪRṆAM STUDIO LUXURY SECURITY & CONTENT PROTECTION GUARDIAN
+   SECURITY & CONTENT PROTECTION GUARDIAN
    1. Blocks Right-Click Context Menu & Inspect Element
    2. Blocks F12, Ctrl+Shift+I/J/C, Ctrl+U (View Source), Ctrl+S
    3. Anti-Drag & Image Shielding
@@ -17,10 +17,10 @@
   // 1. Elegant Security Notification Badge
   function showSecurityToast(message) {
     if (!document.body) return;
-    let existingToast = document.getElementById('purnamSecurityToast');
+    let existingToast = document.getElementById('securityToast');
     if (!existingToast) {
       existingToast = document.createElement('div');
-      existingToast.id = 'purnamSecurityToast';
+      existingToast.id = 'securityToast';
       existingToast.style.cssText = `
         position: fixed;
         bottom: 24px;
@@ -45,7 +45,7 @@
       `;
       document.body.appendChild(existingToast);
     }
-    existingToast.innerHTML = `<span>🔒</span> <strong>Pūrṇam Studio Guard:</strong> ${message}`;
+    existingToast.innerHTML = `<span>🔒</span> <strong>Shubh Vivah:</strong> ${message}`;
     existingToast.style.opacity = '1';
     existingToast.style.transform = 'translateX(-50%) translateY(0)';
     clearTimeout(existingToast._timer);
@@ -105,7 +105,6 @@
   try {
     const bannerStyle = 'color: #D4AF37; font-size: 16px; font-weight: bold; background: #1F0D03; padding: 8px 16px; border: 2px solid #D4AF37; border-radius: 6px;';
     console.log('%c🔒 SHUBH VIVAH • DIGITAL INTEGRITY GUARD ACTIVE', bannerStyle);
-    console.log('%cPresented by Pūrṇam Studio • All rights reserved 2026', 'color: #F8E6A8; font-size: 11px;');
     const noop = () => {};
     window.console.clear = noop;
   } catch (err) {}
@@ -271,7 +270,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (mainExperience) {
         mainExperience.classList.add('revealing');
       }
-      initScratchCard();
     }, 1100);
 
     // 6. Complete transition: unlock body scroll at absolute top
@@ -285,7 +283,6 @@ document.addEventListener('DOMContentLoaded', () => {
       document.documentElement.scrollTop = 0;
       document.body.scrollTop = 0;
 
-      initScratchCard();
       initLuxuryReveals();
     }, 2100);
   }
@@ -340,262 +337,10 @@ document.addEventListener('DOMContentLoaded', () => {
   initLuxuryReveals();
 
   /* --------------------------------------------------------------------------
-     5. HIGH-DPI INTERACTIVE SCRATCH-TO-REVEAL ENGINE
-     -------------------------------------------------------------------------- */
-  const scratchCanvas = document.getElementById('scratchCanvas');
-  const scratchHint = document.getElementById('scratchHint');
-  let scratchCtx = null;
-  let isScratching = false;
-  let totalFoilPixels = 0;
-  let scratched = false;
-  let userStartedScratching = false;
-
-  function initScratchCard() {
-    if (!scratchCanvas || scratched || userStartedScratching) return;
-    const parent = scratchCanvas.parentElement;
-    if (!parent) return;
-
-    // Set actual canvas size matching container client rect with device pixel ratio
-    const rect = parent.getBoundingClientRect();
-    if (rect.width <= 0 || rect.height <= 0) return;
-
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    const width = Math.round(rect.width);
-    const height = Math.round(rect.height);
-
-    scratchCanvas.width = width * dpr;
-    scratchCanvas.height = height * dpr;
-    scratchCanvas.style.width = width + 'px';
-    scratchCanvas.style.height = height + 'px';
-
-    scratchCtx = scratchCanvas.getContext('2d', { willReadFrequently: true });
-    scratchCtx.setTransform(1, 0, 0, 1, 0, 0);
-    scratchCtx.scale(dpr, dpr);
-
-    // Reset cleared state and display hint
-    scratchCanvas.classList.remove('cleared');
-    if (scratchHint) {
-      scratchHint.style.opacity = '1';
-      scratchHint.style.display = 'flex';
-      scratchHint.style.pointerEvents = 'none';
-    }
-
-    // Draw luxury metallic gold foil texture
-    const goldGrad = scratchCtx.createLinearGradient(0, 0, width, height);
-    goldGrad.addColorStop(0.0, '#E5C158');
-    goldGrad.addColorStop(0.18, '#FFE599');
-    goldGrad.addColorStop(0.40, '#D4AF37');
-    goldGrad.addColorStop(0.68, '#C59A27');
-    goldGrad.addColorStop(0.85, '#FFEAA7');
-    goldGrad.addColorStop(1.0, '#996515');
-
-    scratchCtx.fillStyle = goldGrad;
-    scratchCtx.fillRect(0, 0, width, height);
-
-    // Subtle decorative jaali pattern overlay
-    scratchCtx.save();
-    scratchCtx.strokeStyle = 'rgba(255, 255, 255, 0.22)';
-    scratchCtx.lineWidth = 1;
-    const step = 28;
-    for (let x = 0; x < width + step; x += step) {
-      scratchCtx.beginPath();
-      scratchCtx.moveTo(x, 0);
-      scratchCtx.lineTo(x - step, height);
-      scratchCtx.stroke();
-    }
-    for (let x = -step; x < width + step; x += step) {
-      scratchCtx.beginPath();
-      scratchCtx.moveTo(x, 0);
-      scratchCtx.lineTo(x + step, height);
-      scratchCtx.stroke();
-    }
-    scratchCtx.restore();
-
-    // Central Royal Foil Stamp Artwork
-    scratchCtx.save();
-    scratchCtx.textAlign = 'center';
-    scratchCtx.textBaseline = 'middle';
-
-    // Outer border
-    scratchCtx.strokeStyle = '#FFE8A3';
-    scratchCtx.lineWidth = 2.5;
-    scratchCtx.strokeRect(18, 18, width - 36, height - 36);
-
-    // Inner dashed border
-    scratchCtx.setLineDash([6, 6]);
-    scratchCtx.strokeStyle = '#8B5A10';
-    scratchCtx.strokeRect(26, 26, width - 52, height - 52);
-    scratchCtx.setLineDash([]);
-
-    const centerY = height / 2;
-
-    // Auspicious Kalash / Diya Icon
-    scratchCtx.font = '28px "Outfit", sans-serif';
-    scratchCtx.fillStyle = '#4A2808';
-    scratchCtx.fillText('✨ 🪔 ✨', width / 2, centerY - 60);
-
-    // Main Gold Foil Heading
-    scratchCtx.font = 'bold 22px "Cinzel Decorative", "Playfair Display", serif';
-    scratchCtx.fillStyle = '#3A1E05';
-    scratchCtx.shadowColor = 'rgba(255, 240, 180, 0.8)';
-    scratchCtx.shadowBlur = 4;
-    scratchCtx.fillText('SECRET WEDDING DATE', width / 2, centerY - 18);
-
-    scratchCtx.font = '600 13px "Outfit", sans-serif';
-    scratchCtx.fillStyle = '#4A2808';
-    scratchCtx.shadowBlur = 0;
-    scratchCtx.fillText('✦ SHUBH MUHURAT UNVEIL ✦', width / 2, centerY + 16);
-
-    scratchCtx.font = 'italic 12px "Outfit", sans-serif';
-    scratchCtx.fillStyle = '#63390B';
-    scratchCtx.fillText('Rub or drag here with finger / mouse to reveal', width / 2, centerY + 46);
-
-    scratchCtx.restore();
-
-    totalFoilPixels = width * height;
-  }
-
-  // Brush scratch calculation
-  function scratchAt(clientX, clientY) {
-    if (!scratchCanvas || !scratchCtx || scratched) return;
-    const rect = scratchCanvas.getBoundingClientRect();
-    const x = clientX - rect.left;
-    const y = clientY - rect.top;
-
-    scratchCtx.save();
-    scratchCtx.globalCompositeOperation = 'destination-out';
-    scratchCtx.beginPath();
-    scratchCtx.arc(x, y, 28, 0, Math.PI * 2, false);
-    scratchCtx.fill();
-    scratchCtx.restore();
-
-    // Hide instruction hint on first scratch
-    if (scratchHint && scratchHint.style.opacity !== '0') {
-      scratchHint.style.opacity = '0';
-      scratchHint.style.pointerEvents = 'none';
-    }
-
-    // Small sparkle dust emission at scratch point
-    if (Math.random() < 0.3) {
-      spawnScratchSparkle(clientX, clientY);
-    }
-
-    checkScratchProgress();
-  }
-
-  // Check how much has been revealed (> 38% triggers auto-clear)
-  let checkThrottle = null;
-  function checkScratchProgress() {
-    if (checkThrottle || scratched) return;
-    checkThrottle = setTimeout(() => {
-      checkThrottle = null;
-      if (!scratchCanvas || !scratchCtx || scratched) return;
-
-      const w = scratchCanvas.width;
-      const h = scratchCanvas.height;
-      if (w <= 0 || h <= 0) return;
-
-      const imgData = scratchCtx.getImageData(0, 0, w, h);
-      const data = imgData.data;
-
-      let transparentPixels = 0;
-      let totalSampled = 0;
-      const step = 24;
-
-      for (let i = 3; i < data.length; i += 4 * step) {
-        totalSampled++;
-        if (data[i] < 128) {
-          transparentPixels++;
-        }
-      }
-
-      if (totalSampled < 50) return;
-
-      const percent = (transparentPixels / totalSampled) * 100;
-      if (percent > 38) {
-        completeScratch();
-      }
-    }, 180);
-  }
-
-  function completeScratch() {
-    if (scratched) return;
-    scratched = true;
-
-    scratchCanvas.classList.add('cleared');
-    if (scratchHint) scratchHint.style.display = 'none';
-
-    // Trigger grand celebratory confetti shower
-    const rect = scratchCanvas.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    fireConfetti(centerX, centerY, 90);
-  }
-
-  // Mouse Listeners
-  if (scratchCanvas) {
-    scratchCanvas.addEventListener('mousedown', (e) => {
-      isScratching = true;
-      userStartedScratching = true;
-      scratchAt(e.clientX, e.clientY);
-    });
-
-    window.addEventListener('mousemove', (e) => {
-      if (!isScratching) return;
-      scratchAt(e.clientX, e.clientY);
-    });
-
-    window.addEventListener('mouseup', () => {
-      isScratching = false;
-    });
-
-    // Mobile Touch Listeners (Prevent scroll while scratching on canvas)
-    scratchCanvas.addEventListener('touchstart', (e) => {
-      isScratching = true;
-      userStartedScratching = true;
-      if (e.touches && e.touches[0]) {
-        scratchAt(e.touches[0].clientX, e.touches[0].clientY);
-      }
-      e.preventDefault();
-    }, { passive: false });
-
-    scratchCanvas.addEventListener('touchmove', (e) => {
-      if (!isScratching) return;
-      if (e.touches && e.touches[0]) {
-        scratchAt(e.touches[0].clientX, e.touches[0].clientY);
-      }
-      e.preventDefault();
-    }, { passive: false });
-
-    scratchCanvas.addEventListener('touchend', () => {
-      isScratching = false;
-    });
-  }
-
-  // Auto-init and ResizeObserver for scratch card
-  setTimeout(initScratchCard, 100);
-  setTimeout(initScratchCard, 600);
-
-  if (window.ResizeObserver && scratchCanvas && scratchCanvas.parentElement) {
-    const ro = new ResizeObserver((entries) => {
-      for (const entry of entries) {
-        if (entry.contentRect.width > 0 && entry.contentRect.height > 0 && !scratched && !userStartedScratching) {
-          initScratchCard();
-        }
-      }
-    });
-    ro.observe(scratchCanvas.parentElement);
-  }
-
-  window.addEventListener('resize', () => {
-    if (!scratched && !userStartedScratching) initScratchCard();
-  });
-
-  /* --------------------------------------------------------------------------
      6. LIVE COUNTDOWN TIMER TO AUSPICIOUS WEDDING DATE
      -------------------------------------------------------------------------- */
-  // Auspicious date: November 28, 2026 19:15:00 IST
-  const targetWeddingDate = new Date('2026-11-25T10:00:00+05:30').getTime();
+  // Wedding day: Ghudchadhi, 1 December 2026 4:00 PM IST
+  const targetWeddingDate = new Date('2026-12-01T16:00:00+05:30').getTime();
 
   const cdDays = document.getElementById('cdDays');
   const cdHours = document.getElementById('cdHours');
@@ -629,74 +374,8 @@ document.addEventListener('DOMContentLoaded', () => {
   setInterval(updateCountdown, 1000);
 
   /* --------------------------------------------------------------------------
-     7. ADD TO CALENDAR SUITE (Google Calendar & Apple Calendar .ics)
+     7. VIRTUAL FLOWER BLESSING
      -------------------------------------------------------------------------- */
-  const googleCalendarBtn = document.getElementById('googleCalendarBtn');
-  const appleCalendarBtn = document.getElementById('appleCalendarBtn');
-
-  // Event Details
-  const eventDetails = {
-    title: 'Shubh Vivah | Saurav Singh Bisht & Saumya Latwal Wedding Celebrations',
-    start: '20261125T043000Z', // 10:00 AM IST on 25 Nov
-    end: '20261128T183000Z',   // Midnight on 28 Nov
-    location: 'Royal Restaurant & Sweets (Lodhiya), Qwarab (Uttarakhand) & Shri Radha Krishan Vatika (New Delhi)',
-    description: 'Joyfully celebrating the wedding ceremonies of Saurav Singh Bisht (Son of Smt. Anita Bisht & Shri Rajinder Singh Bisht) and Saumya Latwal. Presented by Purnam Studio. 25 Nov: Ganesh Puja (10 AM), Haldi (11 AM), Sangeet (2 PM) & Mehendi (6 PM) (Royal Restaurant & Sweets, Lodhiya) | 26 Nov: Departure of Baarat (10:30 AM), Varmala (1:00 PM), Saat Pheras (2:30 PM) (Qwarab) | 28 Nov: Reception (7:30 PM) & Dinner (8:00 PM) (Shri Radha Krishan Vatika, Najafgarh, New Delhi).'
-  };
-
-  // Google Calendar URL
-  if (googleCalendarBtn) {
-    const googleUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(eventDetails.title)}&dates=${eventDetails.start}/${eventDetails.end}&details=${encodeURIComponent(eventDetails.description)}&location=${encodeURIComponent(eventDetails.location)}`;
-    googleCalendarBtn.href = googleUrl;
-  }
-
-  // Apple Calendar (.ics generator)
-  if (appleCalendarBtn) {
-    appleCalendarBtn.addEventListener('click', () => {
-      const icsContent = [
-        'BEGIN:VCALENDAR',
-        'VERSION:2.0',
-        'PRODID:-//Saurav & Saumya Wedding//EN',
-        'CALSCALE:GREGORIAN',
-        'METHOD:PUBLISH',
-        'BEGIN:VEVENT',
-        `SUMMARY:${eventDetails.title}`,
-        `DESCRIPTION:${eventDetails.description.replace(/\n/g, '\\n')}`,
-        `LOCATION:${eventDetails.location}`,
-        `DTSTART:${eventDetails.start}`,
-        `DTEND:${eventDetails.end}`,
-        'STATUS:CONFIRMED',
-        'SEQUENCE:0',
-        'BEGIN:VALARM',
-        'TRIGGER:-PT24H',
-        'ACTION:DISPLAY',
-        'DESCRIPTION:Reminder: Saurav & Saumya Wedding Tomorrow!',
-        'END:VALARM',
-        'END:VEVENT',
-        'END:VCALENDAR'
-      ].join('\r\n');
-
-      const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
-      const link = document.createElement('a');
-      link.href = window.URL.createObjectURL(blob);
-      link.setAttribute('download', 'Saurav_Saumya_Royal_Wedding.ics');
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-
-      fireConfetti(window.innerWidth / 2, window.innerHeight / 2, 40);
-    });
-  }
-
-  /* --------------------------------------------------------------------------
-     8. WHATSAPP RSVP & VIRTUAL FLOWER BLESSING
-     -------------------------------------------------------------------------- */
-  const whatsappRsvpBtn = document.getElementById('whatsappRsvpBtn');
-  if (whatsappRsvpBtn) {
-    const groomPhone = '919654219271';
-    const waText = encodeURIComponent('Namaste Saurav! 🌸✨\n\nHeartiest Congratulations to you and Saumya on your wedding! We are thrilled to celebrate with you. Sending our warmest blessings, love, and best wishes for a wonderful married life! 💐🎊');
-    whatsappRsvpBtn.href = `https://api.whatsapp.com/send?phone=${groomPhone}&text=${waText}`;
-  }
-
   const quickWishBtn = document.getElementById('quickWishBtn');
   const confettiReplayBtn = document.getElementById('confettiReplayBtn');
 
@@ -890,27 +569,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   requestAnimationFrame(renderAmbientPetals);
 
-  // Sparkle generator for scratch action
-  function spawnScratchSparkle(x, y) {
-    if (!confettiCtx) return;
-    for (let i = 0; i < 4; i++) {
-      const angle = Math.random() * Math.PI * 2;
-      const speed = Math.random() * 3 + 1;
-      confettiParticles.push({
-        x: x,
-        y: y,
-        vx: Math.cos(angle) * speed,
-        vy: Math.sin(angle) * speed,
-        size: Math.random() * 4 + 2,
-        color: '#FFDF78',
-        rotation: 0,
-        rotSpeed: 0,
-        shape: 'petal',
-        opacity: 0.9,
-        life: 0,
-        maxLife: 20
-      });
-    }
-  }
+
 
 });
