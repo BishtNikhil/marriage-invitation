@@ -43,7 +43,7 @@ To run locally:
 
 ## 🌐 Deployment to Vercel
 
-- **Live Production URL**: [https://marriage-invitation-mu-weld.vercel.app](https://marriage-invitation-mu-weld.vercel.app)
+- **Live Production URL**: [https://vipin-jaya-wedding.vercel.app](https://vipin-jaya-wedding.vercel.app)
 - **GitHub Repository**: [https://github.com/BishtNikhil/marriage-invitation](https://github.com/BishtNikhil/marriage-invitation)
 
 To redeploy or update manually:
