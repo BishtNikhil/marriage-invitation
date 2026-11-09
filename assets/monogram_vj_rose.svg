@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Vipin &amp; Jaya Monogram">
+  <title>Vipin &amp; Jaya Monogram</title>
+  <defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#9C4454"/><stop offset="60%" stop-color="#672937"/><stop offset="100%" stop-color="#4E1A25"/></linearGradient></defs>
+  <circle cx="100" cy="100" r="92" fill="none" stroke="url(#g)" stroke-width="5"/>
+  <circle cx="100" cy="100" r="82" fill="none" stroke="url(#g)" stroke-width="1.5"/>
+  <text x="100" y="124" text-anchor="middle" font-family="'Cinzel Decorative','Playfair Display',Georgia,serif" font-weight="700" font-size="64" fill="url(#g)">V&amp;J</text>
+</svg>
