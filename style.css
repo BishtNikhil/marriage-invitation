@@ -99,16 +99,14 @@ body.gate-locked .main-wedding-experience {
   visibility: hidden !important;
   pointer-events: none !important;
 }
-body.gate-locked .top-nav-bar {
+body.gate-locked .top-nav-bar,
+body.gate-locked .audio-toggle-btn,
+body.gate-locked.scrolled-nav .audio-toggle-btn {
+  display: none !important;
   opacity: 0 !important;
   visibility: hidden !important;
   pointer-events: none !important;
   top: -90px !important;
-}
-body.gate-locked .audio-toggle-btn {
-  opacity: 0 !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
 }
 
 /* Background Ambient Canvases */

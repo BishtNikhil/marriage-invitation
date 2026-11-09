@@ -135,6 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const audioStatusText = document.getElementById('audioStatusText');
   let isPlaying = false;
   let wasPlayingBeforeHide = false;
+  let gateOpened = false;
 
   function toggleAudio() {
     if (!audio) return;
@@ -226,7 +227,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const doorsChamber = document.getElementById('doorsChamber');
   const gateStage = document.getElementById('gateStage');
   const mainExperience = document.getElementById('mainExperience');
-  let gateOpened = false;
 
   function triggerDoorOpen() {
     if (gateOpened) return;
